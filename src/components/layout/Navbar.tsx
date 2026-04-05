@@ -21,8 +21,8 @@ const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Solutions", href: "/solutions" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Our Products", href: "#products" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "Our Products", href: "/products" },
     { label: "Contact Us", href: "/contact" },
 ];
 
@@ -30,6 +30,8 @@ export default function Navbar() {
     const navRef = useRef<HTMLElement>(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -44,7 +46,25 @@ export default function Navbar() {
             });
         }, navRef);
 
-        const handleScroll = () => setScrolled(window.scrollY > 80);
+        const handleScroll = () => {
+            const currentY = window.scrollY;
+            // Always show at top of page
+            if (currentY <= 80) {
+                setHidden(false);
+                setScrolled(false);
+                lastScrollY.current = currentY;
+                return;
+            }
+            setScrolled(true);
+            // Hide when scrolling DOWN, show when scrolling UP
+            if (currentY > lastScrollY.current + 4) {
+                setHidden(true);
+            } else if (currentY < lastScrollY.current - 4) {
+                setHidden(false);
+            }
+            lastScrollY.current = currentY;
+        };
+
         window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
@@ -58,14 +78,17 @@ export default function Navbar() {
             {/* ── Main Nav Bar ─────────────────────────────────────── */}
             <nav
                 ref={navRef}
-                className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+                className="fixed top-0 left-0 right-0 z-50"
                 style={{
-                    background: scrolled ? "rgba(10,10,15,0.92)" : "rgba(10,10,15,0.55)",
-                    backdropFilter: "blur(20px) saturate(1.4)",
-                    WebkitBackdropFilter: "blur(20px) saturate(1.4)",
+                    background: scrolled ? "rgba(8,8,13,0.92)" : "rgba(10,10,15,0.55)",
+                    backdropFilter: scrolled ? "blur(24px) saturate(1.6)" : "blur(12px) saturate(1.2)",
+                    WebkitBackdropFilter: scrolled ? "blur(24px) saturate(1.6)" : "blur(12px) saturate(1.2)",
                     borderBottom: scrolled
                         ? "1px solid rgba(255,255,255,0.10)"
                         : "1px solid rgba(255,255,255,0.07)",
+                    transform: hidden ? "translateY(-100%)" : "translateY(0)",
+                    transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1), background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease",
+                    willChange: "transform",
                 }}
                 aria-label="Main navigation"
             >
@@ -117,9 +140,9 @@ export default function Navbar() {
                 >
                     {NAV_LINKS.map((link) => (
                         <li key={link.href}>
-                            {/* Single-page mode: rendered as span, no routing */}
-                            <span
-                                className="relative group cursor-pointer"
+                            <Link
+                                href={link.href}
+                                className="relative group cursor-pointer block"
                                 style={{
                                     fontFamily:    "var(--font-sans)",
                                     fontSize:      "0.8rem",
@@ -128,6 +151,7 @@ export default function Navbar() {
                                     letterSpacing: "0.03em",
                                     whiteSpace:    "nowrap",
                                     userSelect:    "none",
+                                    textDecoration: "none",
                                 }}
                             >
                                 <span className="group-hover:text-white transition-colors duration-200">
@@ -141,7 +165,7 @@ export default function Navbar() {
                                         background: "var(--clr-accent)",
                                     }}
                                 />
-                            </span>
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -227,7 +251,8 @@ export default function Navbar() {
                 <ul className="flex flex-col items-center gap-10" role="list">
                     {NAV_LINKS.map((link) => (
                         <li key={link.href}>
-                            <span
+                            <Link
+                                href={link.href}
                                 onClick={() => setMenuOpen(false)}
                                 style={{
                                     fontFamily:    "var(--font-serif)",
@@ -237,10 +262,12 @@ export default function Navbar() {
                                     letterSpacing: "-0.02em",
                                     cursor:        "pointer",
                                     userSelect:    "none",
+                                    textDecoration: "none",
+                                    display:       "block",
                                 }}
                             >
                                 {link.label}
-                            </span>
+                            </Link>
                         </li>
                     ))}
                 </ul>

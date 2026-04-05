@@ -96,7 +96,7 @@ export default function HeroText({
                         style={{
                             fontFamily: "var(--font-serif)",
                             fontSize: "clamp(3.5rem, 10vw, 9rem)",
-                            fontWeight: 300,
+                            fontWeight: 500,
                             letterSpacing: "-0.02em",
                             color: "var(--clr-mist)",
                             willChange: "opacity, transform",
