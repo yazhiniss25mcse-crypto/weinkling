@@ -2,26 +2,18 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import React, { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const TRUST_BADGES = [
-    { number: "500+", label: "Homes Automated" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "24h", label: "Response Time" },
-];
+import React, { useState } from "react";
 
 const INPUT_BASE: React.CSSProperties = {
     width: "100%",
-    padding: "16px 20px",
-    borderRadius: "12px",
+    padding: "13px 18px",
+    borderRadius: "10px",
     background: "rgba(255,255,255,0.05)",
     border: "1px solid rgba(255,255,255,0.10)",
     color: "#f0ede8",
     fontFamily: "var(--font-sans)",
-    fontWeight: 300,
-    fontSize: "0.95rem",
+    fontWeight: 400,
+    fontSize: "0.85rem",
     outline: "none",
     transition: "border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease",
     boxSizing: "border-box",
@@ -40,11 +32,11 @@ function Field({
                 htmlFor={id}
                 style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "0.68rem",
+                    fontSize: "0.62rem",
                     fontWeight: 500,
-                    letterSpacing: "0.18em",
+                    letterSpacing: "0.20em",
                     textTransform: "uppercase",
-                    color: "rgba(200,180,150,0.7)",
+                    color: "rgba(200,180,150,0.6)",
                 }}
             >
                 {label}
@@ -117,36 +109,58 @@ function StyledSelect(props: SelectProps) {
 
 export default function ContactPage() {
     const [ctaHover, setCtaHover] = useState(false);
-    const statsRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        const ctx = gsap.context(() => {
-            // Pre-set ALL cards invisible at y:0 immediately — ensures identical
-            // baseline positions before any stagger animation starts
-            gsap.set(".contact-stat-card", { opacity: 0 });
-
-            // Fade in only (no y movement) — staggering y causes cards to be at
-            // different vertical positions simultaneously, breaking alignment
-            gsap.to(".contact-stat-card", {
-                opacity: 1,
-                duration: 0.7,
-                ease: "power2.out",
-                stagger: 0.12,
-                scrollTrigger: {
-                    trigger: statsRef.current,
-                    start: "top 85%",
-                    once: true,
-                },
-            });
-        }, statsRef);
-        return () => ctx.revert();
-    }, []);
 
     return (
         <>
             <Navbar />
             <main id="contact-content">
+                <style>{`
+                    /* ── Contact page responsive ───────────────────── */
+                    .contact-grid {
+                        padding: 148px 60px 100px;
+                        grid-template-columns: 1fr 1.08fr;
+                        gap: 80px;
+                    }
+                    .contact-form {
+                        padding: 52px 48px 48px;
+                    }
+                    .contact-name-row {
+                        grid-template-columns: 1fr 1fr;
+                    }
+                    .contact-map {
+                        height: 260px;
+                    }
+                    @media (max-width: 900px) {
+                        .contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 48px;
+                            padding: 120px 40px 80px;
+                        }
+                        .contact-form {
+                            padding: 40px 32px 36px;
+                        }
+                        .contact-map {
+                            height: 220px;
+                        }
+                    }
+                    @media (max-width: 600px) {
+                        .contact-grid {
+                            grid-template-columns: 1fr;
+                            gap: 40px;
+                            padding: 100px 20px 60px;
+                        }
+                        .contact-form {
+                            padding: 28px 20px 24px;
+                            border-radius: 16px;
+                        }
+                        .contact-name-row {
+                            grid-template-columns: 1fr;
+                        }
+                        .contact-map {
+                            height: 180px;
+                        }
+                    }
+                `}</style>
 
                 {/* ── Hero contact section ─────────────────────────────── */}
                 <section
@@ -183,18 +197,17 @@ export default function ContactPage() {
                     }} />
 
                     {/* Main grid */}
-                    <div style={{
-                        position: "relative",
-                        zIndex: 1,
-                        width: "100%",
-                        maxWidth: "1380px",
-                        margin: "0 auto",
-                        padding: "148px 60px 100px",
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1.08fr",
-                        gap: "80px",
-                        alignItems: "center",
-                    }}>
+                    <div
+                        className="contact-grid"
+                        style={{
+                            position: "relative",
+                            zIndex: 1,
+                            width: "100%",
+                            maxWidth: "1380px",
+                            margin: "0 auto",
+                            display: "grid",
+                            alignItems: "center",
+                        }}>
 
                         {/* ── LEFT — info col ────────────────────────────── */}
                         <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
@@ -220,136 +233,45 @@ export default function ContactPage() {
 
                             {/* Headline */}
                             <h1 style={{
-                                fontFamily: "var(--font-serif)",
-                                fontSize: "clamp(3.5rem, 5.5vw, 5.5rem)",
-                                fontWeight: 300,
-                                lineHeight: 1.06,
+                                fontFamily: "var(--font-manrope)",
+                                fontSize: "clamp(2.6rem, 4vw, 3.8rem)",
+                                fontWeight: 600,
+                                lineHeight: 1.08,
                                 letterSpacing: "-0.03em",
                                 color: "#f5f4f0",
-                                margin: "0 0 28px",
+                                margin: "0 0 24px",
                             }}>
-                                Let's build your<br />
-                                <em style={{ color: "var(--clr-accent)", fontStyle: "italic" }}>
+                                Let's build your{" "}
+                                <span style={{
+                                    background: "linear-gradient(90deg, var(--clr-accent), var(--clr-gold))",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                    backgroundClip: "text",
+                                }}>
                                     intelligent home.
-                                </em>
+                                </span>
                             </h1>
 
                             {/* Subtext */}
                             <p style={{
-                                fontFamily: "var(--font-sans)",
-                                fontWeight: 300,
-                                fontSize: "1.08rem",
-                                lineHeight: 1.8,
-                                color: "rgba(245,244,240,0.52)",
-                                maxWidth: "420px",
-                                margin: "0 0 56px",
+                                fontFamily: "var(--font-inter)",
+                                fontWeight: 400,
+                                fontSize: "0.925rem",
+                                lineHeight: 1.75,
+                                color: "rgba(245,244,240,0.45)",
+                                maxWidth: "400px",
+                                margin: "0 0 48px",
                             }}>
                                 Every transformation begins with a conversation. Share your vision and timeline — our experts design and deliver end-to-end.
                             </p>
 
-                            {/* Stats — premium dark-surface cards */}
+                            {/* Contact info — 2×2 grid */}
                             <div style={{
-                                height: "1px",
-                                background: "linear-gradient(to right, transparent, rgba(140,180,184,0.22), transparent)",
-                                marginBottom: "48px",
-                            }} />
-
-                            <div
-                                ref={statsRef}
-                                style={{
-                                    display: "grid",
-                                    gridTemplateColumns: "repeat(3, 1fr)",
-                                    alignItems: "start",
-                                    gap: "12px",
-                                    marginBottom: "44px",
-                                }}
-                            >
-                                {TRUST_BADGES.map((b) => (
-                                    <div
-                                        key={b.label}
-                                        className="contact-stat-card"
-                                        style={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            textAlign: "center",
-                                            padding: "22px 14px 18px",
-                                            minHeight: "108px",
-                                            borderRadius: "16px",
-                                            background: "linear-gradient(160deg, rgba(18,20,36,0.92) 0%, rgba(10,10,18,0.88) 60%, rgba(14,16,30,0.80) 100%)",
-                                            border: "1px solid rgba(140,180,184,0.10)",
-                                            boxShadow: [
-                                                "0 4px 20px rgba(0,0,0,0.40)",
-                                                "inset 0 1px 0 rgba(255,255,255,0.04)",
-                                                "inset 0 0 30px rgba(140,180,184,0.03)",
-                                            ].join(", "),
-                                            transition: "border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1)",
-                                            cursor: "default",
-                                            willChange: "transform",
-                                        }}
-                                        onMouseEnter={e => {
-                                            const el = e.currentTarget as HTMLDivElement;
-                                            el.style.borderColor = "rgba(140,180,184,0.28)";
-                                            el.style.boxShadow = [
-                                                "0 8px 32px rgba(0,0,0,0.50)",
-                                                "0 0 20px rgba(140,180,184,0.08)",
-                                                "inset 0 1px 0 rgba(255,255,255,0.06)",
-                                            ].join(", ");
-                                            el.style.transform = "translateY(-4px)";
-                                        }}
-                                        onMouseLeave={e => {
-                                            const el = e.currentTarget as HTMLDivElement;
-                                            el.style.borderColor = "rgba(140,180,184,0.10)";
-                                            el.style.boxShadow = [
-                                                "0 4px 20px rgba(0,0,0,0.40)",
-                                                "inset 0 1px 0 rgba(255,255,255,0.04)",
-                                                "inset 0 0 30px rgba(140,180,184,0.03)",
-                                            ].join(", ");
-                                            el.style.transform = "translateY(0)";
-                                        }}
-                                    >
-                                        {/* Accent top rule */}
-                                        <span style={{
-                                            display: "block",
-                                            width: "24px",
-                                            height: "1.5px",
-                                            borderRadius: "2px",
-                                            background: "linear-gradient(90deg, transparent, rgba(140,180,184,0.50), transparent)",
-                                            marginBottom: "12px",
-                                        }} />
-                                        <span
-                                            className="contact-stat-number"
-                                            style={{
-                                                fontFamily: "'Manrope', sans-serif",
-                                                fontSize: "clamp(1.6rem, 2.8vw, 2.2rem)",
-                                                fontWeight: 700,
-                                                color: "#f0ede8",
-                                                letterSpacing: "-0.04em",
-                                                lineHeight: 1,
-                                                display: "block",
-                                                marginBottom: "8px",
-                                            }}
-                                        >
-                                            {b.number}
-                                        </span>
-                                        <span style={{
-                                            fontFamily: "'Manrope', sans-serif",
-                                            fontSize: "0.55rem",
-                                            fontWeight: 400,
-                                            letterSpacing: "0.20em",
-                                            textTransform: "uppercase",
-                                            color: "rgba(200,190,175,0.40)",
-                                            lineHeight: 1.4,
-                                        }}>
-                                            {b.label}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Contact info rows */}
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+                                display: "grid",
+                                gridTemplateColumns: "1fr 1fr",
+                                gap: "12px",
+                                marginBottom: "36px",
+                            }}>
                                 {[
                                     {
                                         label: "Direct Email",
@@ -370,7 +292,7 @@ export default function ContactPage() {
                                         ),
                                     },
                                     {
-                                        label: "Studio hours",
+                                        label: "Studio Hours",
                                         value: "Mon – Fri, 9 am – 6 pm",
                                         icon: (
                                             <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -379,38 +301,108 @@ export default function ContactPage() {
                                             </svg>
                                         ),
                                     },
+                                    {
+                                        label: "Studio Address",
+                                        value: "Hyderabad, Telangana, India",
+                                        icon: (
+                                            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                                                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                        ),
+                                    },
                                 ].map((item) => (
                                     <div
                                         key={item.label}
                                         style={{
                                             display: "flex",
-                                            alignItems: "center",
-                                            gap: "20px",
-                                            padding: "22px 0",
-                                            borderBottom: "1px solid rgba(255,255,255,0.05)",
+                                            alignItems: "flex-start",
+                                            gap: "14px",
+                                            padding: "16px",
+                                            background: "rgba(255,255,255,0.03)",
+                                            border: "1px solid rgba(255,255,255,0.06)",
+                                            borderRadius: "12px",
                                         }}
                                     >
-                                        <span style={{ color: "var(--clr-accent)", flexShrink: 0 }}>
+                                        <span style={{
+                                            color: "var(--clr-accent)",
+                                            flexShrink: 0,
+                                            marginTop: "2px",
+                                            padding: "8px",
+                                            background: "rgba(140,180,184,0.08)",
+                                            borderRadius: "8px",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                        }}>
                                             {item.icon}
                                         </span>
-                                        <div style={{ display: "flex", flexDirection: "column", gap: "3px" }}>
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "4px", minWidth: 0 }}>
                                             <span style={{
                                                 fontFamily: "var(--font-sans)",
-                                                fontSize: "0.65rem",
-                                                letterSpacing: "0.16em",
+                                                fontSize: "0.58rem",
+                                                letterSpacing: "0.15em",
                                                 textTransform: "uppercase",
-                                                color: "rgba(245,244,240,0.3)",
+                                                color: "rgba(245,244,240,0.28)",
                                             }}>{item.label}</span>
                                             <span style={{
                                                 fontFamily: "var(--font-sans)",
-                                                fontSize: "0.96rem",
+                                                fontSize: "0.85rem",
                                                 fontWeight: 400,
-                                                color: "rgba(245,244,240,0.82)",
+                                                color: "rgba(245,244,240,0.78)",
+                                                lineHeight: 1.45,
+                                                wordBreak: "break-word",
                                             }}>{item.value}</span>
                                         </div>
                                     </div>
                                 ))}
                             </div>
+
+                            {/* Map — inline in left column */}
+                            <div
+                                className="contact-map"
+                                style={{
+                                    position: "relative",
+                                    borderRadius: "16px",
+                                    overflow: "hidden",
+                                    border: "1px solid rgba(255,255,255,0.07)",
+                                    boxShadow: "0 16px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
+                                }}>
+                                <iframe
+                                    title="Weinkling Studio Location"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.265305878222!2d76.99529317494802!3d11.016844189139614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859af2f971cb5%3A0x2fc1c81e183a433!2sCoimbatore%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1714384800000!5m2!1sen!2sin"
+                                    width="100%"
+                                    height="100%"
+                                    style={{
+                                        border: "none",
+                                        display: "block",
+                                        filter: "grayscale(40%) contrast(1.05) brightness(0.82)",
+                                    }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+                            </div>
+                            <a
+                                href="https://maps.google.com/?q=Coimbatore,Tamil+Nadu"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    display: "inline-block",
+                                    marginTop: "10px",
+                                    fontFamily: "var(--font-inter)",
+                                    fontSize: "0.72rem",
+                                    color: "var(--clr-accent)",
+                                    textDecoration: "none",
+                                    letterSpacing: "0.06em",
+                                    opacity: 0.7,
+                                    transition: "opacity 0.2s",
+                                }}
+                                onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+                                onMouseLeave={e => (e.currentTarget.style.opacity = "0.7")}
+                            >
+                                Open in Google Maps →
+                            </a>
                         </div>
 
                         {/* ── RIGHT — form card ──────────────────────────── */}
@@ -430,13 +422,13 @@ export default function ContactPage() {
                                 id="demo"
                                 aria-label="Contact form"
                                 onSubmit={(e) => e.preventDefault()}
+                                className="contact-form"
                                 style={{
                                     position: "relative",
                                     zIndex: 1,
                                     display: "flex",
                                     flexDirection: "column",
                                     gap: "24px",
-                                    padding: "52px 48px 48px",
                                     borderRadius: "24px",
                                     background: "linear-gradient(150deg, rgba(30,32,46,0.82) 0%, rgba(18,18,28,0.72) 100%)",
                                     backdropFilter: "blur(32px)",
@@ -448,20 +440,20 @@ export default function ContactPage() {
                                 {/* Form header */}
                                 <div style={{ marginBottom: "8px" }}>
                                     <h2 style={{
-                                        fontFamily: "var(--font-serif)",
-                                        fontSize: "1.9rem",
-                                        fontWeight: 300,
+                                        fontFamily: "var(--font-manrope)",
+                                        fontSize: "1.5rem",
+                                        fontWeight: 600,
                                         color: "#f5f4f0",
-                                        letterSpacing: "-0.02em",
-                                        marginBottom: "10px",
+                                        letterSpacing: "-0.03em",
+                                        marginBottom: "8px",
                                     }}>
                                         Start your enquiry
                                     </h2>
                                     <p style={{
-                                        fontFamily: "var(--font-sans)",
-                                        fontSize: "0.88rem",
-                                        fontWeight: 300,
-                                        color: "rgba(245,244,240,0.42)",
+                                        fontFamily: "var(--font-inter)",
+                                        fontSize: "0.82rem",
+                                        fontWeight: 400,
+                                        color: "rgba(245,244,240,0.38)",
                                         lineHeight: 1.6,
                                     }}>
                                         Our concierge team will respond within 24 hours.
@@ -469,7 +461,7 @@ export default function ContactPage() {
                                 </div>
 
                                 {/* Name + Email row */}
-                                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                                <div className="contact-name-row" style={{ display: "grid", gap: "16px" }}>
                                     <Field id="contact-name" label="Full name">
                                         <StyledInput id="contact-name" type="text" placeholder="Your name" required />
                                     </Field>
@@ -563,9 +555,9 @@ export default function ContactPage() {
                                             : "linear-gradient(135deg, rgba(140,180,184,0.18) 0%, rgba(200,169,110,0.12) 100%)",
                                         color: "#f5f4f0",
                                         fontFamily: "var(--font-sans)",
-                                        fontSize: "0.88rem",
+                                        fontSize: "0.78rem",
                                         fontWeight: 500,
-                                        letterSpacing: "0.12em",
+                                        letterSpacing: "0.13em",
                                         textTransform: "uppercase",
                                         cursor: "pointer",
                                         transition: "all 0.28s ease",

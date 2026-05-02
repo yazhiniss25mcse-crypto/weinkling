@@ -388,7 +388,7 @@ export default function WhyChooseUsSection() {
                         margin:        0,
                     }}>
                         Built for Reliability,{" "}
-                        <em style={{ fontStyle: "italic", color: "rgba(245,244,240,0.65)" }}>
+                        <em style={{ fontStyle: "normal", color: "rgba(245,244,240,0.65)" }}>
                             Designed for Comfort
                         </em>
                     </h2>

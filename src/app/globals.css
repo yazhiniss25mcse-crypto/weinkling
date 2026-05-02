@@ -1,5 +1,5 @@
-/* ── Fonts: Manrope loaded via next/font (layout.tsx) ── */
-/* manrope.className on <body> + manrope.variable on <html> for CSS var access */
+/* ── Fonts: Manrope (body) + Inter (headings) via next/font (layout.tsx) ── */
+/* Both .variable classes on <html>; manrope.className on <body> for body text */
 
 @import "tailwindcss";
 
@@ -26,7 +26,7 @@
   --clr-text-muted: rgba(245, 244, 240, 0.35);
 
   /* Typography — resolved directly on html/body (see below) */
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-inter);   /* heading display font → Inter (modern sans-serif) */
   --font-sans:  var(--font-manrope);
   --font-body:  'Manrope', sans-serif;
 
@@ -87,24 +87,45 @@ html {
   }
 }
 
-/* ── Heading weights ─────────────────────────────────────────
-   Cormorant Garamond loaded at 300 / 400 / 600.
-   !important overrides inline fontWeight:300 in section components
-   without touching every file individually.
+/* ── Heading hierarchy — Inter (modern sans-serif) ───────────
+   !important overrides inline fontWeight declarations in section
+   components without touching every file individually.
+   Negative letter-spacing on h1/h2 gives a sharp, display feel.
 ──────────────────────────────────────────────────────────── */
 h1 {
   font-family: var(--font-serif);
-  font-weight: 600 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
 h2 {
   font-family: var(--font-serif);
-  font-weight: 600 !important;  /* bold serif — was 300 globally */
+  font-weight: 700 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 h3 {
   font-family: var(--font-serif);
-  font-weight: 400;             /* card/step titles stay regular */
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 500 !important;
+  letter-spacing: 0;
+  line-height: 1.4;
 }
 
 /* ── Typography utilities ─────────────────────────────────── */

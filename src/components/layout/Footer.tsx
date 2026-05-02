@@ -84,6 +84,7 @@ export default function Footer() {
         >
             {/* ── Main grid container ─────────────────────────────────── */}
             <div
+                className="footer-outer"
                 style={{
                     maxWidth: "1400px",
                     margin: "0 auto",
@@ -111,7 +112,15 @@ export default function Footer() {
                         @media (max-width: 640px) {
                             .footer-grid {
                                 grid-template-columns: 1fr;
-                                gap: 40px;
+                                gap: 36px;
+                            }
+                            .footer-outer {
+                                padding: 56px 24px 40px !important;
+                            }
+                            .footer-bottom {
+                                flex-direction: column;
+                                align-items: flex-start !important;
+                                gap: 10px !important;
                             }
                         }
                         .footer-link:hover {
@@ -231,6 +240,7 @@ export default function Footer() {
 
                 {/* ── Bottom bar ──────────────────────────────────────── */}
                 <div
+                    className="footer-bottom"
                     style={{
                         display: "flex",
                         alignItems: "center",

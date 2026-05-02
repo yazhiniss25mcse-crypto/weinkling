@@ -8,12 +8,12 @@ import type { HeroConfig } from "./hero.types";
 
 export const heroConfig: HeroConfig = {
     dayImage: {
-        src: "/hero_night.webp",
+        src: "/nightslide1.webp",
         alt: "Weinkling smart home — warm nighttime ambience with intelligent lighting",
         priority: true,
     },
     nightImage: {
-        src: "/hero_day.webp",
+        src: "/dayslide2.webp",
         alt: "Weinkling smart home — bright daytime living room with automated lighting",
         priority: false,
     },

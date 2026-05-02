@@ -3,7 +3,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroContainer from "@/components/hero/HeroContainer";
 import ControlMethods from "@/components/sections/ControlMethods";
-import ServicesSection from "@/components/sections/ServicesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import HowItWorksSection from "@/components/sections/HowItWorksSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
@@ -40,9 +39,6 @@ export default function HomePage() {
 
         {/* 2 — How you control it */}
         <ControlMethods />
-
-        {/* 3 — What we offer */}
-        <ServicesSection />
 
         {/* 4 — Social proof */}
         <TestimonialsSection />

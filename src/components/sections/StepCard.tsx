@@ -23,6 +23,7 @@ export interface StepData {
     number:      string;      // "01" "02" etc.
     title:       string;
     description: string;
+    benefit?:    string;      // optional short benefit tag
     icon:        React.ReactNode;
     accent:      "teal" | "gold";
 }
@@ -122,6 +123,43 @@ const StepCard = React.forwardRef<HTMLDivElement, StepCardProps>(
                     <p className="hiw-step-desc">
                         {step.description}
                     </p>
+
+                    {/* Benefit tag */}
+                    {step.benefit && (
+                        <div
+                            className="hiw-step-benefit"
+                            style={{
+                                display:        "inline-flex",
+                                alignItems:     "center",
+                                gap:            "6px",
+                                marginTop:      "1.1rem",
+                                padding:        "4px 10px 4px 8px",
+                                borderRadius:   "6px",
+                                background:     `rgba(${isTeal ? "140,180,184" : "200,169,110"},0.08)`,
+                                border:         `1px solid rgba(${isTeal ? "140,180,184" : "200,169,110"},0.16)`,
+                            }}
+                        >
+                            {/* Checkmark */}
+                            <svg
+                                width="11" height="11" viewBox="0 0 24 24" fill="none"
+                                stroke={accentColor} strokeWidth="2.2"
+                                strokeLinecap="round" strokeLinejoin="round"
+                                aria-hidden="true"
+                            >
+                                <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            <span style={{
+                                fontFamily:    "var(--font-inter, 'Inter', var(--font-sans))",
+                                fontSize:      "0.68rem",
+                                fontWeight:    500,
+                                letterSpacing: "0.04em",
+                                color:         accentColor,
+                                opacity:       0.80,
+                            }}>
+                                {step.benefit}
+                            </span>
+                        </div>
+                    )}
                 </div>
             </div>
         );

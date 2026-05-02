@@ -282,7 +282,7 @@ export default function TestimonialsSection() {
                     font-family: var(--font-serif);
                     font-size: clamp(1rem, 1.25vw, 1.15rem);
                     font-weight: 400;
-                    font-style: italic;
+                    font-style: normal;
                     line-height: 1.7;
                     letter-spacing: 0.005em;
                     color: rgba(245, 244, 240, 0.88);

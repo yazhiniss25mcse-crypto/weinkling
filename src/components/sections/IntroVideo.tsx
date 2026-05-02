@@ -157,7 +157,7 @@ export default function IntroVideo() {
                     A glimpse into{" "}
                     <em
                         style={{
-                            fontStyle:           "italic",
+                            fontStyle:           "normal",
                             background:          "linear-gradient(90deg, var(--clr-accent), var(--clr-gold))",
                             WebkitBackgroundClip:"text",
                             WebkitTextFillColor: "transparent",

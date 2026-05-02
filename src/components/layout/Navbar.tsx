@@ -11,11 +11,11 @@
  */
 
 import React, { useRef, useEffect, useState } from "react";
-import Link from "next/link"; // kept for logo anchor only
-
+import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { X } from "lucide-react";
 
 const NAV_LINKS = [
     { label: "Home", href: "/" },
@@ -100,8 +100,8 @@ export default function Navbar() {
                 style={{
                     maxWidth:       "1400px",
                     margin:         "0 auto",
-                    paddingLeft:    "48px",
-                    paddingRight:   "48px",
+                    paddingLeft:    "clamp(16px, 4vw, 48px)",
+                    paddingRight:   "clamp(16px, 4vw, 48px)",
                     height:         "64px",
                     display:        "flex",
                     alignItems:     "center",
@@ -200,45 +200,29 @@ export default function Navbar() {
                         Get Started
                     </button>
 
-                    {/* Mobile hamburger */}
+                    {/* Mobile hamburger — always renders bars; X lives only inside the overlay */}
                     <button
                         id="mobile-menu-toggle"
-                        className="lg:hidden flex flex-col justify-center gap-1.5 p-2"
-                        aria-label={menuOpen ? "Close menu" : "Open menu"}
+                        className="lg:hidden flex items-center justify-center"
+                        aria-label="Open menu"
                         aria-expanded={menuOpen}
                         onClick={() => setMenuOpen(!menuOpen)}
+                        style={{ width: 36, height: 36, background: "transparent", border: "none", cursor: "pointer", padding: 0 }}
                     >
-                        <span
-                            className="block w-6 h-px transition-all duration-300"
-                            style={{
-                                background: "var(--clr-mist)",
-                                transform:  menuOpen ? "rotate(45deg) translateY(4px)" : "none",
-                            }}
-                        />
-                        <span
-                            className="block w-4 h-px transition-all duration-300"
-                            style={{
-                                background: "var(--clr-mist)",
-                                opacity:    menuOpen ? 0 : 1,
-                            }}
-                        />
-                        <span
-                            className="block w-6 h-px transition-all duration-300"
-                            style={{
-                                background: "var(--clr-mist)",
-                                transform:  menuOpen ? "rotate(-45deg) translateY(-4px)" : "none",
-                            }}
-                        />
+                        <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
+                            <rect y="0" width="22" height="1.5" rx="1" fill="var(--clr-mist)"/>
+                            <rect y="7" width="16" height="1.5" rx="1" fill="var(--clr-mist)"/>
+                            <rect y="14" width="22" height="1.5" rx="1" fill="var(--clr-mist)"/>
+                        </svg>
                     </button>
                 </div>
             </div>
         </nav>
 
 
-            {/* ── Mobile Menu Overlay ───────────────────────────────── */}
             <div
                 id="mobile-menu"
-                className="fixed inset-0 z-40 lg:hidden flex flex-col justify-center items-center transition-all duration-500"
+                className="fixed inset-0 z-40 lg:hidden flex flex-col transition-all duration-500"
                 style={{
                     background: "rgba(10,10,15,0.97)",
                     backdropFilter: "blur(20px)",
@@ -248,57 +232,73 @@ export default function Navbar() {
                 }}
                 aria-hidden={!menuOpen}
             >
-                <ul className="flex flex-col items-center gap-10" role="list">
-                    {NAV_LINKS.map((link) => (
-                        <li key={link.href}>
-                            <Link
-                                href={link.href}
-                                onClick={() => setMenuOpen(false)}
-                                style={{
-                                    fontFamily:    "var(--font-serif)",
-                                    fontSize:      "clamp(2rem, 8vw, 3.5rem)",
-                                    fontWeight:    300,
-                                    color:         "var(--clr-mist)",
-                                    letterSpacing: "-0.02em",
-                                    cursor:        "pointer",
-                                    userSelect:    "none",
-                                    textDecoration: "none",
-                                    display:       "block",
-                                }}
-                            >
-                                {link.label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-
+                {/* X — absolute top-right */}
                 <button
-                    type="button"
                     onClick={() => setMenuOpen(false)}
-                    className="mt-14"
-                    style={{
-                        display:             "inline-flex",
-                        alignItems:          "center",
-                        gap:                 "0.5rem",
-                        padding:             "0.6rem 1.8rem",
-                        borderRadius:        "9999px",
-                        background:          "linear-gradient(135deg, rgba(140,180,184,0.22) 0%, rgba(200,169,110,0.18) 100%)",
-                        border:              "1px solid rgba(140,180,184,0.45)",
-                        color:               "rgba(245,244,240,0.92)",
-                        fontFamily:          "var(--font-sans)",
-                        fontSize:            "0.8rem",
-                        fontWeight:          500,
-                        letterSpacing:       "0.09em",
-                        textTransform:       "uppercase",
-                        backdropFilter:      "blur(12px)",
-                        WebkitBackdropFilter:"blur(12px)",
-                        cursor:              "pointer",
-                        transition:          "opacity 0.25s ease",
-                        whiteSpace:          "nowrap",
-                    } as React.CSSProperties}
+                    aria-label="Close menu"
+                    style={{ position: "absolute", top: 20, right: "clamp(16px,4vw,48px)", background: "transparent", border: "none", cursor: "pointer", padding: 4, display: "flex", alignItems: "center", zIndex: 1 }}
                 >
-                    Get Started
+                    <X size={22} color="var(--clr-mist)" strokeWidth={1.5} />
                 </button>
+
+                {/* Nav links + CTA — fully centered */}
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 24px" }}>
+                    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", alignItems: "center", width: "100%", maxWidth: 340 }} role="list">
+                        {NAV_LINKS.map((link) => (
+                            <li key={link.href} style={{ width: "100%" }}>
+                                <Link
+                                    href={link.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    style={{
+                                        fontFamily:     "var(--font-serif)",
+                                        fontSize:       "clamp(1.6rem, 6vw, 2.4rem)",
+                                        fontWeight:     300,
+                                        color:          "var(--clr-mist)",
+                                        letterSpacing:  "-0.02em",
+                                        cursor:         "pointer",
+                                        userSelect:     "none",
+                                        textDecoration: "none",
+                                        display:        "block",
+                                        padding:        "12px 0",
+                                        borderBottom:   "1px solid rgba(255,255,255,0.06)",
+                                        textAlign:      "center",
+                                    }}
+                                >
+                                    {link.label}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* CTA — centered, links to /contact */}
+                    <Link
+                        href="/contact"
+                        onClick={() => setMenuOpen(false)}
+                        style={{
+                            display:             "inline-flex",
+                            alignItems:          "center",
+                            justifyContent:      "center",
+                            marginTop:           "28px",
+                            padding:             "0.7rem 2.2rem",
+                            borderRadius:        "9999px",
+                            background:          "linear-gradient(135deg, rgba(140,180,184,0.22) 0%, rgba(200,169,110,0.18) 100%)",
+                            border:              "1px solid rgba(140,180,184,0.45)",
+                            color:               "rgba(245,244,240,0.92)",
+                            fontFamily:          "var(--font-sans)",
+                            fontSize:            "0.78rem",
+                            fontWeight:          500,
+                            letterSpacing:       "0.09em",
+                            textTransform:       "uppercase",
+                            backdropFilter:      "blur(12px)",
+                            WebkitBackdropFilter:"blur(12px)",
+                            cursor:              "pointer",
+                            textDecoration:      "none",
+                            whiteSpace:          "nowrap",
+                        } as React.CSSProperties}
+                    >
+                        Get Started
+                    </Link>
+                </div>
             </div>
         </>
     );

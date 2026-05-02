@@ -83,28 +83,34 @@ export default function HeroText({
                 Home Automation Systems
             </span>
 
-            {/* Headline */}
+            {/* Headline — split-weight editorial: light first line, bold accent last */}
             <h1
                 className="overflow-hidden"
-                style={{ lineHeight: 1.05 }}
+                style={{ lineHeight: 1.08, letterSpacing: "-0.035em" }}
             >
-                {headline.map((line, i) => (
-                    <span
-                        key={i}
-                        ref={(el) => assignHeadlineRef(el, i)}
-                        className="block"
-                        style={{
-                            fontFamily: "var(--font-serif)",
-                            fontSize: "clamp(3.5rem, 10vw, 9rem)",
-                            fontWeight: 500,
-                            letterSpacing: "-0.02em",
-                            color: "var(--clr-mist)",
-                            willChange: "opacity, transform",
-                        }}
-                    >
-                        {line}
-                    </span>
-                ))}
+                {headline.map((line, i) => {
+                    const isLast = i === headline.length - 1;
+                    return (
+                        <span
+                            key={i}
+                            ref={(el) => assignHeadlineRef(el, i)}
+                            className="block"
+                            style={{
+                                fontFamily: "var(--font-serif)",
+                                fontSize:      isLast
+                                    ? "clamp(2.6rem, 6.5vw, 5.8rem)"
+                                    : "clamp(2.4rem, 6vw, 5.2rem)",
+                                fontWeight:    isLast ? 800 : 300,
+                                letterSpacing: isLast ? "-0.04em" : "-0.02em",
+                                color:         isLast ? "var(--clr-accent)" : "rgba(245,244,240,0.82)",
+                                willChange:    "opacity, transform",
+                                display:       "block",
+                            }}
+                        >
+                            {line}
+                        </span>
+                    );
+                })}
             </h1>
 
             {/* Subline */}

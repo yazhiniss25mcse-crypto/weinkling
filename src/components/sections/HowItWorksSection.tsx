@@ -82,6 +82,7 @@ const STEPS: StepData[] = [
         number:      "01",
         title:       "Consultation",
         description: "We understand your needs, lifestyle, and home layout to create the right plan.",
+        benefit:     "Free consultation",
         icon:        <ConsultIcon />,
         accent:      "teal",
     },
@@ -90,6 +91,7 @@ const STEPS: StepData[] = [
         number:      "02",
         title:       "Planning",
         description: "We design a customized automation system tailored to your space and preferences.",
+        benefit:     "Custom system design",
         icon:        <PlanIcon />,
         accent:      "gold",
     },
@@ -98,6 +100,7 @@ const STEPS: StepData[] = [
         number:      "03",
         title:       "Installation",
         description: "Our certified experts install everything seamlessly — no rewiring required.",
+        benefit:     "Professional setup",
         icon:        <InstallIcon />,
         accent:      "teal",
     },
@@ -106,6 +109,7 @@ const STEPS: StepData[] = [
         number:      "04",
         title:       "Support",
         description: "We stay with you — ongoing support, updates, and upgrades whenever you need.",
+        benefit:     "Lifetime support",
         icon:        <SupportIcon />,
         accent:      "gold",
     },
@@ -141,10 +145,10 @@ export default function HowItWorksSection() {
             aria-label="How It Works"
             style={{
                 position:   "relative",
-                background: "var(--clr-deep)",   /* Slightly different from void for visual rhythm */
-                borderTop:  "1px solid rgba(245,244,240,0.05)",
+                background: "linear-gradient(to bottom, #0b0f1a, #05070d)",
+                borderTop:  "1px solid rgba(255,255,255,0.05)",
                 overflow:   "hidden",
-                opacity:    0,                    /* GSAP section fade-in will reveal this */
+                opacity:    0,
             }}
         >
 
@@ -157,21 +161,21 @@ export default function HowItWorksSection() {
                 .hiw-steps {
                     display: grid;
                     grid-template-columns: repeat(4, 1fr);
-                    gap: 28px;
+                    gap: 24px;
                     position: relative;
                 }
 
                 @media (max-width: 900px) {
                     .hiw-steps {
                         grid-template-columns: repeat(2, 1fr);
-                        gap: 28px;
+                        gap: 16px;
                     }
                 }
 
-                @media (max-width: 540px) {
+                @media (max-width: 600px) {
                     .hiw-steps {
                         grid-template-columns: 1fr;
-                        gap: 20px;
+                        gap: 16px;
                     }
                 }
 
@@ -268,35 +272,37 @@ export default function HowItWorksSection() {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
-                    padding: 44px 32px 40px;
+                    padding: 32px 24px 28px;
+                    min-height: 120px;
                     height: 100%;
-                    border-radius: 28px;
-                    background: linear-gradient(
-                        155deg,
-                        rgba(20,22,40,0.82) 0%,
-                        rgba(12,12,24,0.76) 60%,
-                        rgba(16,14,30,0.86) 100%
-                    );
-                    border: 1px solid var(--card-border, rgba(140,180,184,0.10));
-                    backdrop-filter: blur(24px) saturate(140%);
-                    -webkit-backdrop-filter: blur(24px) saturate(140%);
+                    border-radius: 16px;
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid rgba(255,255,255,0.07);
+                    backdrop-filter: blur(16px) saturate(130%);
+                    -webkit-backdrop-filter: blur(16px) saturate(130%);
                     box-shadow:
-                        0 8px 40px rgba(0,0,0,0.52),
-                        0 2px 12px rgba(0,0,0,0.30),
-                        inset 0 1px 0 rgba(255,255,255,0.055),
-                        inset 0 -1px 0 rgba(0,0,0,0.18);
+                        0 4px 24px rgba(0,0,0,0.40),
+                        inset 0 1px 0 rgba(255,255,255,0.04);
                     overflow: hidden;
                     transition:
-                        border-color  0.38s cubic-bezier(0.25,0.46,0.45,0.94),
-                        box-shadow    0.38s cubic-bezier(0.25,0.46,0.45,0.94),
-                        transform     0.44s cubic-bezier(0.34,1.56,0.64,1);
+                        border-color  0.25s ease,
+                        box-shadow    0.25s ease,
+                        transform     0.25s ease;
                     will-change: transform, box-shadow;
                 }
 
+                @media (max-width: 600px) {
+                    .hiw-card-shell {
+                        padding: 20px 18px;
+                        min-height: 120px;
+                        border-radius: 14px;
+                    }
+                }
+
                 .hiw-step:hover .hiw-card-shell {
-                    border-color: var(--hover-border, rgba(140,180,184,0.28));
+                    border-color: var(--hover-border, rgba(140,180,184,0.26));
                     box-shadow:   var(--hover-shadow);
-                    transform:    translateY(-6px);
+                    transform:    translateY(-4px);
                 }
 
                 /* ── Top accent glow rule ── */
@@ -417,58 +423,58 @@ export default function HowItWorksSection() {
                 }
 
                 /* ════════════════════════════════════════════════
-                   TYPOGRAPHY
+                   TYPOGRAPHY  —  matches Contact page tokens
                 ════════════════════════════════════════════════ */
 
                 /* ── Step label (STEP 01) ── */
                 .hiw-step-label {
-                    font-family: 'Manrope', var(--font-sans);
+                    font-family: var(--font-manrope, 'Manrope', var(--font-sans));
                     font-size: 0.60rem;
-                    font-weight: 600;
-                    letter-spacing: 0.32em;
+                    font-weight: 500;
+                    letter-spacing: 0.28em;
                     text-transform: uppercase;
-                    margin-bottom: 0;       /* divider provides spacing */
+                    margin-bottom: 0;
                     display: block;
-                    opacity: 0.72;          /* resting: muted so hover lift is visible */
-                    transition: opacity 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+                    color: rgba(245, 244, 240, 0.38);
+                    transition: color 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
                 }
-                .hiw-step:hover .hiw-step-label { opacity: 1; }
+                .hiw-step:hover .hiw-step-label { color: rgba(245, 244, 240, 0.60); }
 
-                /* ── Accent divider (breathing gap between label and title) ── */
+                /* ── Accent divider ── */
                 .hiw-divider {
                     height: 1px;
                     width: 2.5rem;
-                    margin: 1rem 0 1.2rem;  /* more vertical space above and below */
+                    margin: 0.9rem 0 1.1rem;
                     border-radius: 1px;
                     transition: width 0.40s cubic-bezier(0.25,0.46,0.45,0.94);
                 }
                 .hiw-step:hover .hiw-divider { width: 4rem; }
 
-                /* ── Step title (Consultation, Planning…) ── */
+                /* ── Step title — Manrope 600, tight tracking (Contact page match) ── */
                 .hiw-step-title {
-                    font-family: var(--font-serif);
-                    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-                    font-weight: 500;       /* medium — anchors the hierarchy */
-                    line-height: 1.18;
-                    letter-spacing: -0.018em;
-                    color: #e8e4de;
-                    margin: 0 0 1rem;       /* bigger gap between title and desc */
-                    transition: color 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+                    font-family: var(--font-manrope, 'Manrope', var(--font-sans));
+                    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+                    font-weight: 600;
+                    line-height: 1.15;
+                    letter-spacing: -0.025em;
+                    color: #f0ede8;
+                    margin: 0 0 0.85rem;
+                    transition: color 0.28s ease;
                 }
                 .hiw-step:hover .hiw-step-title { color: #f8f5f0; }
 
-                /* ── Step description ── */
+                /* ── Step description — Inter 400, relaxed leading ── */
                 .hiw-step-desc {
-                    font-family: 'Manrope', var(--font-sans);
-                    font-size: 0.88rem;     /* slightly larger for readability */
-                    font-weight: 400;       /* regular — more legible than 300 */
-                    line-height: 1.85;
+                    font-family: var(--font-inter, 'Inter', var(--font-sans));
+                    font-size: clamp(0.82rem, 0.95vw, 0.88rem);
+                    font-weight: 400;
+                    line-height: 1.80;
                     color: rgba(245, 244, 240, 0.40);
                     margin: 0;
-                    transition: color 0.32s cubic-bezier(0.25,0.46,0.45,0.94);
+                    transition: color 0.28s ease;
                 }
                 .hiw-step:hover .hiw-step-desc {
-                    color: rgba(245, 244, 240, 0.65);
+                    color: rgba(245, 244, 240, 0.62);
                 }
 
                 /* ════════════════════════════════════════════════
@@ -537,9 +543,10 @@ export default function HowItWorksSection() {
                 .hiw-cta-nudge {
                     display: inline-flex;
                     align-items: center;
+                    justify-content: center;
                     gap: 0.5rem;
-                    margin-top: clamp(3rem, 5.5vw, 5rem);
-                    padding: 0.65rem 1.6rem;
+                    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+                    padding: 0.7rem 1.6rem;
                     border-radius: 9999px;
                     border: 1px solid rgba(140,180,184,0.28);
                     background: rgba(140,180,184,0.06);
@@ -560,6 +567,13 @@ export default function HowItWorksSection() {
                     box-shadow: 0 12px 28px rgba(140,180,184,0.12);
                 }
                 .hiw-cta-nudge svg { flex-shrink: 0; }
+
+                @media (max-width: 600px) {
+                    .hiw-cta-nudge {
+                        width: 100%;
+                        padding: 12px 16px;
+                    }
+                }
 
             `}</style>
 
@@ -583,12 +597,12 @@ export default function HowItWorksSection() {
 
             {/* ── Inner container ─────────────────────────────────── */}
             <div style={{
-                maxWidth:      "1380px",
+                maxWidth:      "1152px",
                 margin:        "0 auto",
-                paddingTop:    "clamp(5.5rem, 11vh, 9rem)",
-                paddingBottom: "clamp(5.5rem, 11vh, 9rem)",
-                paddingLeft:   "clamp(1.25rem, 4.5vw, 3.5rem)",
-                paddingRight:  "clamp(1.25rem, 4.5vw, 3.5rem)",
+                paddingTop:    "clamp(4rem, 9vw, 7rem)",
+                paddingBottom: "clamp(4rem, 9vw, 7rem)",
+                paddingLeft:   "clamp(1rem, 4vw, 3rem)",
+                paddingRight:  "clamp(1rem, 4vw, 3rem)",
                 position:      "relative",
                 zIndex:        1,
             }}>
@@ -621,28 +635,28 @@ export default function HowItWorksSection() {
                         }} />
                     </div>
 
-                    {/* Heading */}
+                    {/* Heading — Manrope 600, tight tracking: matches Contact h1 */}
                     <h2 ref={headingRef} style={{
-                        fontFamily:    "var(--font-serif)",
-                        fontSize:      "clamp(1.75rem, 3.6vw, 3rem)",
-                        fontWeight:    300,
+                        fontFamily:    "var(--font-manrope, 'Manrope', var(--font-sans))",
+                        fontSize:      "clamp(1.7rem, 3.2vw, 2.6rem)",
+                        fontWeight:    600,
                         lineHeight:    1.1,
-                        letterSpacing: "-0.022em",
-                        color:         "var(--clr-mist)",
-                        maxWidth:      "560px",
+                        letterSpacing: "-0.03em",
+                        color:         "#f5f4f0",
+                        maxWidth:      "540px",
                         margin:        "0 auto 1rem",
                     }}>
                         From Idea to Intelligent Living
                     </h2>
 
-                    {/* Subtext */}
+                    {/* Subtext — Inter 400, relaxed leading, muted */}
                     <p ref={subtextRef} style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize:   "clamp(0.875rem, 1.05vw, 0.95rem)",
-                        fontWeight: 300,
-                        lineHeight: 1.85,
-                        color:      "rgba(245,244,240,0.42)",
-                        maxWidth:   "380px",
+                        fontFamily: "var(--font-inter, 'Inter', var(--font-sans))",
+                        fontSize:   "clamp(0.82rem, 1vw, 0.92rem)",
+                        fontWeight: 400,
+                        lineHeight: 1.75,
+                        color:      "rgba(245,244,240,0.40)",
+                        maxWidth:   "400px",
                         margin:     "0 auto",
                     }}>
                         A simple 4-step process to transform your home.
@@ -677,22 +691,40 @@ export default function HowItWorksSection() {
                     </div>
                 </div>
 
-                {/* ── Subtle CTA nudge ────────────────────────────── */}
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                {/* ── CTA block ───────────────────────────────────── */}
+                <div style={{
+                    display:        "flex",
+                    flexDirection:  "column",
+                    alignItems:     "center",
+                    gap:            "16px",
+                    marginTop:      "clamp(2.5rem, 5vw, 4rem)",
+                    paddingBottom:  "1.5rem",
+                }}>
+                    {/* Label */}
+                    <p style={{
+                        fontFamily:    "var(--font-inter, 'Inter', var(--font-sans))",
+                        fontSize:      "0.85rem",
+                        fontWeight:    400,
+                        color:         "rgba(245,244,240,0.38)",
+                        letterSpacing: "0.02em",
+                        margin:        0,
+                    }}>
+                        Ready to get started?
+                    </p>
+
+                    {/* Button */}
                     <a
                         href="/contact"
-                        className="hiw-cta-nudge"
                         id="hiw-cta"
-                        aria-label="Book your free consultation"
+                        aria-label="Book a free consultation"
+                        className="hiw-cta-nudge"
                     >
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" strokeWidth="1.4"
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" strokeWidth="1.5"
                             strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="10" />
-                            <polyline points="12 8 16 12 12 16" />
-                            <line x1="8" y1="12" x2="16" y2="12" />
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
-                        Ready to start? Book your free consultation
+                        Book a Free Consultation
                     </a>
                 </div>
 

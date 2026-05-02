@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Manrope, Cormorant_Garamond } from "next/font/google";
+import { Manrope, Inter, Abel } from "next/font/google";
 import "./globals.css";
+import ChatBotWrapper from "@/components/layout/ChatBotWrapper";
 
 
 // ── Fonts via next/font — zero FOUT, self-hosted, optimal loading ─────────
@@ -11,11 +12,17 @@ const manrope = Manrope({
   display:  "swap",
 });
 
-const cormorant = Cormorant_Garamond({
+const inter = Inter({
   subsets:  ["latin"],
-  weight:   ["300", "400", "600"],
-  style:    ["normal", "italic"],
-  variable: "--font-cormorant",
+  weight:   ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-inter",
+  display:  "swap",
+});
+
+const abel = Abel({
+  subsets:  ["latin"],
+  weight:   ["400"],
+  variable: "--font-abel",
   display:  "swap",
 });
 
@@ -59,12 +66,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${cormorant.variable}`}
+      className={`${manrope.variable} ${inter.variable} ${abel.variable}`}
     >
       {/* manrope.className directly on body guarantees Manrope applies
           even if the CSS variable chain is disrupted by Tailwind preflight */}
       <body className={`antialiased ${manrope.className}`}>
         {children}
+        <ChatBotWrapper />
       </body>
     </html>
   );

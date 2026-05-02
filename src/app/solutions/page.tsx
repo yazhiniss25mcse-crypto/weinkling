@@ -72,6 +72,7 @@ function ParallaxSection({ img, label, heading, sub, bullets, accent = "var(--cl
     return (
         <section
             ref={ref}
+            className="sol-parallax-section"
             style={{
                 position: "relative",
                 height: "88vh",
@@ -125,14 +126,14 @@ function ParallaxSection({ img, label, heading, sub, bullets, accent = "var(--cl
             }} />
 
             {/* Content */}
-            <div style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 60px", display: "flex", justifyContent: flip ? "flex-end" : "flex-start" }}>
+            <div className="sol-parallax-content" style={{ position: "relative", zIndex: 2, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 60px", display: "flex", justifyContent: flip ? "flex-end" : "flex-start" }}>
                 <Reveal from={flip ? "right" : "left"} style={{ maxWidth: 520 }}>
                     <Label text={label} color={accent} />
-                    <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.6rem,4.5vw,4rem)", fontWeight: 300, lineHeight: 1.08, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 20 }}>{heading}</h2>
-                    <p style={{ fontFamily: "'Manrope', var(--font-sans)", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,244,240,.52)", marginBottom: 32 }}>{sub}</p>
+                    <h2 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(2.6rem,4.5vw,4rem)", fontWeight: 600, lineHeight: 1.08, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 20 }}>{heading}</h2>
+                    <p style={{ fontFamily: "'Manrope', var(--font-sans)", fontWeight: 400, fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,244,240,.52)", marginBottom: 32 }}>{sub}</p>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
                         {bullets.map(b => (
-                            <li key={b} style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 300, fontSize: "0.9rem", color: "rgba(245,244,240,.65)" }}>
+                            <li key={b} style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 400, fontSize: "0.9rem", color: "rgba(245,244,240,.65)" }}>
                                 <span style={{ width: 18, height: 1, background: accent, flexShrink: 0 }} />{b}
                             </li>
                         ))}
@@ -257,7 +258,7 @@ function ProcessCard({ step }: { step: typeof PROCESS_STEPS[number] }) {
             {/* Watermark step number */}
             <div style={{
                 position: "absolute", bottom: 16, right: 20,
-                fontFamily: "var(--font-serif)",
+                fontFamily: "var(--font-manrope)",
                 fontSize: "5.5rem", fontWeight: 700, lineHeight: 1,
                 color: `rgba(140,180,184,${hovered ? "0.07" : "0.035"})`,
                 letterSpacing: "-0.04em",
@@ -298,8 +299,8 @@ function ProcessCard({ step }: { step: typeof PROCESS_STEPS[number] }) {
 
             {/* Title */}
             <h3 style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: "1.35rem", fontWeight: 400,
+                fontFamily: "var(--font-manrope)",
+                fontSize: "1.35rem", fontWeight: 600,
                 color: hovered ? "#f5f4f0" : "#dedad4",
                 letterSpacing: "-0.015em", lineHeight: 1.2,
                 margin: 0,
@@ -318,7 +319,7 @@ function ProcessCard({ step }: { step: typeof PROCESS_STEPS[number] }) {
             {/* Description */}
             <p style={{
                 fontFamily: "var(--font-sans)",
-                fontWeight: 300, fontSize: "0.875rem",
+                fontWeight: 400, fontSize: "0.875rem",
                 lineHeight: 1.80,
                 color: hovered ? "rgba(245,244,240,0.60)" : "rgba(245,244,240,0.36)",
                 transition: "color 0.40s ease",
@@ -436,13 +437,13 @@ function ProcessSection() {
             <Reveal style={{ textAlign: "center", marginBottom: 88, position: "relative", zIndex: 1 }}>
                 <Label text="Our Process" />
                 <h2 style={{
-                    fontFamily: "var(--font-serif)",
+                    fontFamily: "var(--font-manrope)",
                     fontSize: "clamp(2.4rem,4vw,3.5rem)",
-                    fontWeight: 300, letterSpacing: "-0.025em",
+                    fontWeight: 600, letterSpacing: "-0.025em",
                     color: "#f5f4f0", lineHeight: 1.1,
                 }}>
                     From idea to<br />
-                    <em style={{ color: "var(--clr-accent)" }}>intelligent home.</em>
+                    <span style={{ background: "linear-gradient(90deg, var(--clr-accent), var(--clr-gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", fontStyle: "normal" }}>intelligent home.</span>
                 </h2>
             </Reveal>
 
@@ -816,16 +817,57 @@ export default function SolutionsPage() {
                 <style>{`
                     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
                     .sol-page * { box-sizing: border-box; }
-                    /* Section rhythm */
                     .sol-section { scroll-margin-top: 80px; }
-                    /* Consistent body text */
-                    .sol-body { font-family: 'Manrope', sans-serif; font-weight: 300; line-height: 1.80; color: rgba(245,244,240,0.50); }
+                    .sol-body { font-family: 'Manrope', sans-serif; font-weight: 400; line-height: 1.80; color: rgba(245,244,240,0.50); }
                     .sol-body-strong { font-family: 'Manrope', sans-serif; font-weight: 400; color: rgba(245,244,240,0.72); }
-                    /* Premium card surface */
                     .sol-card { background: linear-gradient(145deg,rgba(22,24,40,0.88),rgba(13,13,22,0.80)); border: 1px solid rgba(255,255,255,0.055); backdrop-filter: blur(14px); border-radius: 20px; transition: border-color .35s ease, box-shadow .35s ease; }
                     .sol-card:hover { border-color: rgba(140,180,184,0.22); box-shadow: 0 28px 60px rgba(0,0,0,0.55), 0 0 40px rgba(140,180,184,0.06); }
-                    /* Section separator gradient */
                     .sol-sep { border: none; height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent); margin: 0; }
+                    /* Gradient heading span */
+                    .sol-grad { background: linear-gradient(90deg, var(--clr-accent), var(--clr-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: normal; }
+
+                    /* ═══════════════════════════════
+                       MOBILE — ≤768px
+                    ═══════════════════════════════ */
+                    @media (max-width: 768px) {
+                        /* Hero */
+                        #sol-hero { min-height: 100svh; height: auto !important; }
+                        #sol-hero > div:last-of-type { padding: 0 20px; }
+
+                        /* Control Hub 2-col → 1-col */
+                        #sol-control-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 48px !important;
+                            padding: 80px 24px !important;
+                        }
+
+                        /* Parallax sections */
+                        .sol-parallax-section { height: auto !important; min-height: 60vh; padding: 80px 0 !important; }
+                        .sol-parallax-content { padding: 0 24px !important; justify-content: flex-start !important; }
+
+                        /* Retrofit cards 3→1 */
+                        #sol-retrofit-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 16px !important;
+                        }
+                        #sol-retrofit-section { padding: 80px 24px !important; }
+
+                        /* Ecosystem logo row */
+                        #sol-eco-section { padding: 80px 24px !important; }
+                        #sol-eco-logos { gap: 32px !important; flex-wrap: wrap; }
+                        #sol-eco-logos > div[style*="width: 1"] { display: none; } /* hide dividers on mobile */
+
+                        /* CTA */
+                        #sol-cta { padding: 100px 24px !important; }
+                        #sol-cta h2 { font-size: clamp(2.2rem,8vw,3.5rem) !important; }
+                    }
+
+                    @media (max-width: 480px) {
+                        .sol-parallax-content > div { max-width: 100% !important; }
+                        #sol-retrofit-grid .sol-card { padding: 32px 24px !important; }
+                        #sol-eco-logos { gap: 24px !important; }
+                        #sol-eco-logos svg { width: 64px !important; height: 64px !important; }
+                    }
                 `}</style>
 
                 {/* ══ 1. HERO ══════════════════════════════════════════ */}
@@ -838,10 +880,10 @@ export default function SolutionsPage() {
                             <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 500, letterSpacing: "0.26em", textTransform: "uppercase", color: "var(--clr-accent)" }}>Our Solutions</span>
                             <span style={{ width: 24, height: 1, background: "var(--clr-accent)" }} />
                         </div>
-                        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3.5rem,8vw,7.5rem)", fontWeight: 300, lineHeight: 1.03, letterSpacing: "-0.03em", color: "#f5f4f0", margin: "0 auto 24px", maxWidth: 900, animation: "s-fadeUp .95s .4s both" }}>
-                            Smart Living,<br /><em style={{ color: "var(--clr-accent)" }}>Designed Around You</em>
+                        <h1 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(2rem,3.5vw,3.2rem)", fontWeight: 600, lineHeight: 1.08, letterSpacing: "-0.03em", color: "#f5f4f0", margin: "0 auto 24px", maxWidth: 900, animation: "s-fadeUp .95s .4s both" }}>
+                            Smart Living,<br /><span className="sol-grad">Designed Around You</span>
                         </h1>
-                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(245,244,240,.5)", maxWidth: 520, margin: "0 auto 48px", animation: "s-fadeUp 1s .6s both" }}>
+                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "1.1rem", lineHeight: 1.75, color: "rgba(245,244,240,.5)", maxWidth: 520, margin: "0 auto 48px", animation: "s-fadeUp 1s .6s both" }}>
                             Control, comfort, and intelligence — seamlessly integrated into your home.
                         </p>
                         <a href="#control" style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "16px 40px", borderRadius: 100, border: "1px solid rgba(140,180,184,.4)", background: "rgba(140,180,184,.12)", color: "#f5f4f0", fontFamily: "var(--font-sans)", fontSize: "0.82rem", fontWeight: 500, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none", animation: "s-fadeUp 1s .8s both" }}>
@@ -862,20 +904,20 @@ export default function SolutionsPage() {
 
                 {/* ══ 2. CONTROL HUB ═══════════════════════════════════ */}
                 <div style={{ background: "linear-gradient(180deg, rgba(140,180,184,0.028) 0%, transparent 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-                <section id="control" className="sol-section" style={{ maxWidth: 1320, margin: "0 auto", padding: "160px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 96, alignItems: "center" }}>
+                <section id="sol-control-grid" className="sol-section" style={{ maxWidth: 1320, margin: "0 auto", padding: "160px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 96, alignItems: "center" }}>
                     <Reveal from="left">
                         <Label text="One System" />
-                        <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.4rem,4vw,3.6rem)", fontWeight: 300, lineHeight: 1.1, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 24 }}>
-                            Everything under<br /><em style={{ color: "var(--clr-accent)" }}>one command.</em>
+                        <h2 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(2.4rem,4vw,3.6rem)", fontWeight: 600, lineHeight: 1.1, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 24 }}>
+                            Everything under<br /><span className="sol-grad">one command.</span>
                         </h2>
-                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,244,240,.48)", marginBottom: 40, maxWidth: 420 }}>
+                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "1rem", lineHeight: 1.8, color: "rgba(245,244,240,.48)", marginBottom: 40, maxWidth: 420 }}>
                             Lights, fans, curtains, and climate — all controlled via voice, app, or touch panel from anywhere in the world.
                         </p>
                         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                             {["Works with Alexa, Google & Apple Home", "Control remotely from any device, globally", "One-tap scenes for every moment"].map(t => (
                                 <div key={t} style={{ display: "flex", alignItems: "center", gap: 12 }}>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-7" stroke="var(--clr-accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                                    <span style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "0.92rem", color: "rgba(245,244,240,.65)" }}>{t}</span>
+                                    <span style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "0.92rem", color: "rgba(245,244,240,.65)" }}>{t}</span>
                                 </div>
                             ))}
                         </div>
@@ -924,14 +966,14 @@ export default function SolutionsPage() {
 
                 {/* ══ 7. RETROFIT ══════════════════════════════════════ */}
                 <div style={{ background: "linear-gradient(180deg, transparent 0%, rgba(200,169,110,0.018) 50%, transparent 100%)", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                <section className="sol-section" style={{ maxWidth: 1320, margin: "0 auto", padding: "160px 60px" }}>
+                <section id="sol-retrofit-section" className="sol-section" style={{ maxWidth: 1320, margin: "0 auto", padding: "160px 60px" }}>
                     <Reveal style={{ textAlign: "center", marginBottom: 72 }}>
                         <Label text="Easy Installation" />
-                        <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.4rem,4vw,3.5rem)", fontWeight: 300, letterSpacing: "-0.025em", color: "#f5f4f0", lineHeight: 1.1 }}>
-                            No rewiring. No renovation.<br /><em style={{ color: "var(--clr-accent)" }}>Just installation.</em>
+                        <h2 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(2.4rem,4vw,3.5rem)", fontWeight: 600, letterSpacing: "-0.025em", color: "#f5f4f0", lineHeight: 1.1 }}>
+                            No rewiring. No renovation.<br /><span className="sol-grad">Just installation.</span>
                         </h2>
                     </Reveal>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+                    <div id="sol-retrofit-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
                         {[
                             {
                                 icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>,
@@ -952,7 +994,7 @@ export default function SolutionsPage() {
                             <Reveal key={card.title} delay={i * 120}>
                                 <div className="sol-card" style={{ padding: "48px 40px", height: "100%" }}>
                                     <div style={{ color: "var(--clr-accent)", marginBottom: 20 }}>{card.icon}</div>
-                                    <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "1.3rem", fontWeight: 400, color: "#f0ede8", marginBottom: 14, letterSpacing: "-0.015em", lineHeight: 1.25 }}>{card.title}</h3>
+                                    <h3 style={{ fontFamily: "var(--font-manrope)", fontSize: "1.3rem", fontWeight: 600, color: "#f0ede8", marginBottom: 14, letterSpacing: "-0.015em", lineHeight: 1.25 }}>{card.title}</h3>
                                     <p className="sol-body" style={{ fontSize: "0.9rem" }}>{card.desc}</p>
                                 </div>
                             </Reveal>
@@ -962,7 +1004,7 @@ export default function SolutionsPage() {
                 </div>
 
                 {/* ══ 8. ECOSYSTEM ═════════════════════════════════════ */}
-                <section className="sol-section" style={{ padding: "160px 60px", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,.04)", position: "relative", overflow: "hidden", background: "linear-gradient(180deg, rgba(140,180,184,0.022) 0%, transparent 50%, rgba(140,180,184,0.012) 100%)" }}>
+                <section id="sol-eco-section" className="sol-section" style={{ padding: "160px 60px", textAlign: "center", borderBottom: "1px solid rgba(255,255,255,.04)", position: "relative", overflow: "hidden", background: "linear-gradient(180deg, rgba(140,180,184,0.022) 0%, transparent 50%, rgba(140,180,184,0.012) 100%)" }}>
 
                     {/* Section ambient glow */}
                     <div aria-hidden style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "80vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(140,180,184,0.06) 0%, transparent 65%)", filter: "blur(60px)", pointerEvents: "none" }} />
@@ -976,16 +1018,16 @@ export default function SolutionsPage() {
 
                     <Reveal>
                         <Label text="Ecosystem" />
-                        <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.4rem,4vw,3.5rem)", fontWeight: 300, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 16, lineHeight: 1.1 }}>
-                            Works with everything<br /><em style={{ color: "var(--clr-accent)" }}>you already use.</em>
+                        <h2 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(2.4rem,4vw,3.5rem)", fontWeight: 600, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 16, lineHeight: 1.1 }}>
+                            Works with everything<br /><span className="sol-grad">you already use.</span>
                         </h2>
-                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "1rem", color: "rgba(245,244,240,.42)", maxWidth: 440, margin: "0 auto 80px" }}>
+                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "1rem", color: "rgba(245,244,240,.42)", maxWidth: 440, margin: "0 auto 80px" }}>
                             Native integration with all major smart home ecosystems.
                         </p>
                     </Reveal>
 
                     {/* Logo row */}
-                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "72px", flexWrap: "wrap", position: "relative", zIndex: 1 }}>
+                    <div id="sol-eco-logos" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "72px", flexWrap: "wrap", position: "relative", zIndex: 1 }}>
 
                         {/* ── Amazon Alexa ── */}
                         <Reveal delay={0}>
@@ -1047,15 +1089,13 @@ export default function SolutionsPage() {
                                 onMouseEnter={e => { const d = e.currentTarget as HTMLDivElement; d.style.filter = "drop-shadow(0 0 18px rgba(255,255,255,0.30))"; d.style.transform = "scale(1.10)"; d.style.transition = "transform .35s cubic-bezier(.34,1.56,.64,1), filter .35s ease"; }}
                                 onMouseLeave={e => { const d = e.currentTarget as HTMLDivElement; d.style.filter = "none"; d.style.transform = "scale(1)"; }}
                             >
-                                {/* Apple  */}
+                                {/* Clean Apple logo SVG — properly centered */}
                                 <svg width="88" height="88" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="44" cy="44" r="40" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)" strokeWidth="1" />
-                                    {/* Apple logo path */}
-                                    <path d="M54.5 30.5C56.5 28.2 57.8 25 57.5 21.8C54.7 22 51.2 23.8 49.1 26.2C47.2 28.3 45.7 31.7 46.1 34.8C49.2 35 52.4 33 54.5 30.5Z" fill="rgba(255,255,255,0.85)" />
-                                    <path d="M57.3 35.8C53.4 35.6 50.1 38 48.2 38C46.3 38 43.4 35.9 40.1 36C34.7 36.1 29.5 39.5 26.6 44.8C20.8 55.5 25.1 71.3 30.7 79.8C33.5 84 36.8 88.7 41.2 88.5C45.3 88.3 46.9 85.8 51.9 85.8C56.9 85.8 58.3 88.5 62.7 88.4C67.3 88.3 70.1 84.2 72.9 80C76.2 75.2 77.6 70.6 77.7 70.3C77.6 70.2 68.9 66.9 68.8 57.2C68.7 48.9 75.6 45 76 44.7C72 38.7 65.5 36.1 57.3 35.8Z" fill="rgba(255,255,255,0.85)" transform="scale(0.52) translate(30, 10)" />
-                                    {/* Simplified  for small size */}
-                                    <path d="M49 25 C51 22 53 20 55 22 C53 24 51 26 49 25Z" fill="rgba(255,255,255,0.80)" />
-                                    <path d="M44 34 C47 30 52 29 55 31 C57 33 58 37 57 41 C56 47 52 54 48 58 C46 60 44 61 42 59 C40 57 38 56 36 59 C34 61 32 60 30 57 C26 51 24 44 26 39 C28 34 32 31 36 32 C39 33 41 34 44 34Z" fill="rgba(255,255,255,0.82)" />
+                                    {/* Leaf / bite mark */}
+                                    <path d="M50.5 24.5 C51.8 22.5 52.5 20 52 18 C49.5 18.3 46.5 20 44.8 22 C43.2 23.8 42.2 26.5 42.8 29 C45.5 29.2 48.2 27.5 50.5 24.5Z" fill="rgba(255,255,255,0.85)" />
+                                    {/* Apple body */}
+                                    <path d="M52 31 C49 31 47 33 44 33 C41 33 38.5 31 35.5 31 C30.5 31.1 25 35 22.5 41 C19 49 20 63 26 70 C28.5 73.5 31.5 77 35.5 77 C39 77 40.5 74.5 44 74.5 C47.5 74.5 49 77 52.5 77 C56.5 77 59.5 73 62 69.5 C64 66.5 65 63.5 65 63.5 C65 63.5 58.5 61 58.5 53.5 C58.5 47 63.5 44 64 43.8 C61 38.8 56 31.2 52 31Z" fill="rgba(255,255,255,0.85)" />
                                 </svg>
                                 <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>Apple Home</span>
                             </div>
@@ -1088,56 +1128,29 @@ export default function SolutionsPage() {
 
                     {/* Trust line */}
                     <Reveal delay={500}>
-                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "0.78rem", letterSpacing: "0.10em", color: "rgba(245,244,240,0.22)", marginTop: 72, textTransform: "uppercase" }}>
+                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "0.78rem", letterSpacing: "0.10em", color: "rgba(245,244,240,0.22)", marginTop: 72, textTransform: "uppercase" }}>
                             Certified compatibility · Zero cloud lock-in · Local-first control
                         </p>
                     </Reveal>
                 </section>
 
-                {/* ══ 9. TOUCH PANELS ══════════════════════════════════ */}
-                <div style={{ background: "linear-gradient(180deg, transparent 0%, rgba(200,169,110,0.015) 50%, transparent 100%)", borderTop: "1px solid rgba(255,255,255,0.04)", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
-                <section className="sol-section" style={{ maxWidth: 1320, margin: "0 auto", padding: "160px 60px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
-                        <Reveal from="left">
-                            <Label text="Touch Panels" />
-                            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2.4rem,4vw,3.5rem)", fontWeight: 300, letterSpacing: "-0.025em", color: "#f5f4f0", marginBottom: 20, lineHeight: 1.1 }}>
-                                Elegant control,<br /><em style={{ color: "var(--clr-accent)" }}>at your fingertips.</em>
-                            </h2>
-                            <p className="sol-body" style={{ fontSize: "0.95rem", maxWidth: 380, marginTop: 20 }}>
-                                Every room. One surface. Designed to disappear into your wall and reappear when you need it.
-                            </p>
-                        </Reveal>
 
-                        {/* Panel grid */}
-                        <Reveal from="right">
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-                                {["/images/services/panels.png", "/images/services/control.png", "/images/services/lighting.png", "/images/services/voice.png"].map((src, i) => (
-                                    <div key={i} style={{ borderRadius: 14, overflow: "hidden", aspectRatio: "1/1", border: "1px solid rgba(255,255,255,.06)", transition: "transform .35s ease, box-shadow .35s ease" }}
-                                        onMouseEnter={e => { const d = e.currentTarget as HTMLDivElement; d.style.transform = "scale(1.04)"; d.style.boxShadow = "0 20px 40px rgba(0,0,0,.5)"; }}
-                                        onMouseLeave={e => { const d = e.currentTarget as HTMLDivElement; d.style.transform = "none"; d.style.boxShadow = "none"; }}
-                                    >
-                                        <img src={src} alt="Panel" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                                    </div>
-                                ))}
-                            </div>
-                        </Reveal>
-                    </div>
-                </section>
-                </div>
+                {/* ══ 9. TOUCH PANELS — removed ══════════════════════════ */}
+
 
                 {/* ══ 10. PROCESS ══════════════════════════════════════ */}
-                <ProcessSection />
+                {/* ProcessSection removed */}
 
                 {/* ══ 11. FINAL CTA ═════════════════════════════════════ */}
-                <section className="sol-section" style={{ position: "relative", padding: "200px 60px", textAlign: "center", overflow: "hidden", background: "linear-gradient(180deg, transparent 0%, rgba(140,180,184,0.032) 50%, transparent 100%)" }}>
+                <section id="sol-cta" className="sol-section" style={{ position: "relative", padding: "200px 60px", textAlign: "center", overflow: "hidden", background: "linear-gradient(180deg, transparent 0%, rgba(140,180,184,0.032) 50%, transparent 100%)" }}>
                     <div aria-hidden style={{ position: "absolute", top: "-20%", left: "50%", transform: "translateX(-50%)", width: "80vw", height: "80vw", maxWidth: 900, maxHeight: 900, borderRadius: "50%", background: "radial-gradient(ellipse,rgba(140,180,184,.07) 0%,transparent 65%)", filter: "blur(80px)", pointerEvents: "none" }} />
                     <div aria-hidden style={{ position: "absolute", bottom: "-20%", right: "-5%", width: "45vw", height: "45vw", maxWidth: 600, borderRadius: "50%", background: "radial-gradient(ellipse,rgba(200,169,110,.05) 0%,transparent 65%)", filter: "blur(80px)", pointerEvents: "none" }} />
                     <Reveal style={{ position: "relative", zIndex: 1, maxWidth: 720, margin: "0 auto" }}>
                         <Label text="Get Started" />
-                        <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(3rem,6vw,5.5rem)", fontWeight: 300, lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f5f4f0", marginBottom: 24 }}>
-                            Start your smart<br /><em style={{ color: "var(--clr-accent)" }}>home journey.</em>
+                        <h2 style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(3rem,6vw,5.5rem)", fontWeight: 600, lineHeight: 1.06, letterSpacing: "-0.03em", color: "#f5f4f0", marginBottom: 24 }}>
+                            Start your smart<br /><span className="sol-grad">home journey.</span>
                         </h2>
-                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 300, fontSize: "1.05rem", lineHeight: 1.75, color: "rgba(245,244,240,.42)", marginBottom: 56 }}>
+                        <p style={{ fontFamily: "var(--font-sans)", fontWeight: 400, fontSize: "1.05rem", lineHeight: 1.75, color: "rgba(245,244,240,.42)", marginBottom: 56 }}>
                             Tell us about your home. We&apos;ll handle everything else.
                         </p>
                         <Link href="/contact"

@@ -75,7 +75,7 @@ export default function CTASection() {
                 }}
             />
 
-            <div className="section-container text-center relative" style={{ paddingTop: "120px", paddingBottom: "120px" }}>
+            <div className="section-container text-center relative" style={{ paddingTop: "clamp(60px,10vw,120px)", paddingBottom: "clamp(60px,10vw,120px)" }}>
                 {/* Section label */}
                 <div className="flex items-center justify-center gap-3 mb-10">
                     <span
@@ -103,10 +103,10 @@ export default function CTASection() {
                 <h2
                     ref={headlineRef}
                     style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: "clamp(3rem, 7vw, 6.5rem)",
+                        fontFamily: "var(--font-manrope)",
+                        fontSize: "clamp(1.8rem, 3.2vw, 3rem)",
                         fontWeight: 300,
-                        lineHeight: 1.05,
+                        lineHeight: 1.1,
                         letterSpacing: "-0.025em",
                         color: "var(--clr-mist)",
                     }}
@@ -115,7 +115,7 @@ export default function CTASection() {
                     <br />
                     <em
                         style={{
-                            fontStyle: "italic",
+                            fontStyle: "normal",
                             background:
                                 "linear-gradient(90deg, var(--clr-accent), var(--clr-gold))",
                             WebkitBackgroundClip: "text",

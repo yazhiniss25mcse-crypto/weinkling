@@ -257,7 +257,7 @@ export default function ControlMethods() {
                     }}
                 >
                     Your Home,{" "}
-                    <em style={{ fontStyle: "italic", color: "var(--clr-accent)" }}>Your Way</em>
+                    <em style={{ fontStyle: "normal", color: "var(--clr-accent)" }}>Your Way</em>
                 </h2>
             </div>
 
@@ -290,12 +290,22 @@ export default function ControlMethods() {
                         }
                         .cm-panel {
                             position: relative !important;
-                            min-height: 90vw;
+                            min-height: 75vw !important;
                             opacity: 1 !important;
                             transform: none !important;
                         }
+                        /* Mobile: content container uses full width with tighter padding */
+                        .cm-panel > div > div {
+                            padding: 0 20px !important;
+                        }
+                        /* Content column takes full width on mobile */
+                        .cm-panel > div > div > div {
+                            max-width: 100% !important;
+                        }
                         /* Hide device image on mobile — text uses full width */
                         .cm-switchboard { display: none !important; }
+                        /* Progress dots hidden on mobile */
+                        #cm-progress-dots { display: none !important; }
                     }
                 `}</style>
 
@@ -450,8 +460,9 @@ export default function ControlMethods() {
                 ))}
             </div>
 
-            {/* ── Progress dots ────────────────────────────────────────── */}
+            {/* ── Progress dots ─────────────────────────────── */}
             <div
+                id="cm-progress-dots"
                 style={{
                     position: "absolute",
                     bottom: "2rem",

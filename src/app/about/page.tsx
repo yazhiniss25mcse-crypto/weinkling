@@ -111,84 +111,56 @@ const STATS = [
     },
 ];
 
+// ── Team data — map to /public/team images ─────────────────────────────────
+// To add a new member: add an entry here + drop their image in /public/team/
 const TEAM = [
     {
-        name: "Bhavana Uppaluri",
-        role: "Creative Director",
-        bio: "Bhavana leads the aesthetic soul of every project — translating complex smart-home systems into spaces that feel beautifully human, refined, and spatially intelligent.",
-        image: "/assets/BHAVANA UPPALURI -Creative Director.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-4.jpeg",
+        category: "Leadership",
     },
     {
-        name: "Srinivas Uppaluri",
-        role: "CxO",
-        bio: "Srinivas drives the client and experience vision at Weinkling — ensuring every touchpoint, from first consultation to final handover, reflects uncompromising quality.",
-        image: "/assets/SRINIVAS UPPALURI.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-8.jpeg",
+        category: "Leadership",
     },
     {
-        name: "Satya Sree Bobba",
-        role: "Co-founder",
-        bio: "Satya co-founded Weinkling with a clarity of purpose: to make intelligence in the home feel invisible, inevitable, and enduring for every family we serve.",
-        image: "/assets/SATYA SREE BOBBA.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-7.jpeg",
+        category: "Leadership",
     },
     {
-        name: "Nanda Gopal",
-        role: "Chief Mentor",
-        bio: "With decades of domain experience, Nanda Gopal guides the team's technical direction — setting the standards of precision and craft that every project is held to.",
-        image: "/assets/NANDA GOPAL.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-6.jpeg",
+        category: "Leadership",
     },
     {
-        name: "Punith Salian",
-        role: "Project Developer",
-        bio: "Punith develops and delivers smart-home projects end to end — bridging technical planning with on-ground execution to ensure nothing falls through the cracks.",
-        image: "/assets/PUNITH SALIAN.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-2.jpeg",
+        category: "Engineering",
     },
     {
-        name: "Lenin",
-        role: "Design Architect",
-        bio: "Lenin shapes the spatial and systems design of each installation — creating blueprints where elegant aesthetics and intelligent infrastructure are truly inseparable.",
-        image: "/assets/LENIN.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-3.jpeg",
+        category: "Engineering",
     },
     {
-        name: "Nithin Kumar",
-        role: "Mechanical Engineer",
-        bio: "Nithin handles the physical engineering layer of every project — HVAC integration, structural coordination, and ensuring all mechanical systems run in perfect harmony.",
-        image: "/assets/NITHIN KUMAR.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-5.jpeg",
+        category: "Operations",
     },
     {
-        name: "Swaroop B U",
-        role: "Design Engineer",
-        bio: "Swaroop engineers the detailed design of control systems and interfaces — turning complex automation logic into clean, buildable, installation-ready specifications.",
-        image: "/assets/SWAROOP B U.avif",
-    },
-    {
-        name: "Sachidanand Pandit",
-        role: "App Developer",
-        bio: "Sachidanand builds the software layer that brings every smart home to life — developing intuitive apps and control interfaces that feel seamless in daily use.",
-        image: "/assets/SACHIDANAND PANDIT.avif",
-    },
-    {
-        name: "Nandakumar",
-        role: "Project Developer & Consultant",
-        bio: "Nandakumar consults on and develops smart-home projects across the stack — advising clients on system scope while overseeing delivery from design to commissioning.",
-        image: "/assets/NANDAKUMAR.avif",
-    },
-    {
-        name: "Umesh Kumar",
-        role: "Mechanical Consultant",
-        bio: "Umesh consults on mechanical systems across Weinkling projects — ensuring climate control, ventilation, and physical infrastructure meet the highest performance standards.",
-        image: "/assets/UMESH KUMAR.avif",
-    },
-    {
-        name: "Archana",
-        role: "HR Executive",
-        bio: "Archana builds and sustains the culture behind Weinkling's excellence — recruiting the right talent and ensuring every team member thrives in an environment of purpose.",
-        image: "/assets/ARCHANA.avif",
-    },
-    {
-        name: "Kiran K",
-        role: "BD Executive",
-        bio: "Kiran grows Weinkling's presence — identifying new opportunities, nurturing client relationships, and helping more homes access the intelligence they deserve.",
-        image: "/assets/KIRAN K.avif",
+        name: "Name",
+        role: "Title",
+        image: "/team/member-1.jpeg",
+        category: "Operations",
     },
 ];
 
@@ -249,7 +221,7 @@ export default function AboutPage() {
                 {/* ══════════════════════════════════════════
                     1. HERO  — Editorial / Brand Story
                 ══════════════════════════════════════════ */}
-                <section style={{
+                <section id="abt-hero" style={{
                     position: "relative",
                     minHeight: "100vh",
                     display: "flex",
@@ -288,7 +260,7 @@ export default function AboutPage() {
                         position: "absolute",
                         right: "-2%",
                         bottom: "4%",
-                        fontFamily: "var(--font-serif)",
+                        fontFamily: "var(--font-manrope)",
                         fontSize: "clamp(18rem, 26vw, 32rem)",
                         fontWeight: 300,
                         lineHeight: 0.85,
@@ -301,7 +273,7 @@ export default function AboutPage() {
                     </div>
 
                     {/* ── Main content ── */}
-                    <div style={{
+                    <div id="abt-hero-inner" style={{
                         position: "relative", zIndex: 2,
                         maxWidth: "1320px", width: "100%",
                         margin: "0 auto",
@@ -312,7 +284,7 @@ export default function AboutPage() {
                         alignItems: "center",
                     }}>
                         {/* Vertical rule + rotated label */}
-                        <div style={{
+                        <div id="abt-hero-rule" style={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
@@ -366,7 +338,7 @@ export default function AboutPage() {
 
                             {/* Headline */}
                             <h1 style={{
-                                fontFamily: "var(--font-serif)",
+                                fontFamily: "var(--font-manrope)",
                                 fontSize: "clamp(3rem, 5.5vw, 5.8rem)",
                                 fontWeight: 300,
                                 lineHeight: 1.06,
@@ -378,7 +350,7 @@ export default function AboutPage() {
                             }}>
                                 We design intelligence<br />
                                 into <em style={{
-                                    fontStyle: "italic",
+                                    fontStyle: "normal",
                                     color: "var(--clr-accent)",
                                 }}>everyday living.</em>
                             </h1>
@@ -407,47 +379,11 @@ export default function AboutPage() {
                                 </p>
                             </div>
 
-                            {/* Stat strip */}
-                            <div style={{
-                                display: "flex", gap: "0",
-                                marginTop: "64px",
-                                animation: "abt_fadeUp 1s 0.85s both",
-                            }}>
-                                {[
-                                    { value: "500+", label: "Homes Delivered" },
-                                    { value: "10+", label: "Years of Craft" },
-                                    { value: "98%", label: "Client Satisfaction" },
-                                ].map((stat, i) => (
-                                    <div key={stat.label} style={{
-                                        paddingRight: "48px",
-                                        marginRight: "48px",
-                                        borderRight: i < 2 ? "1px solid rgba(255,255,255,0.07)" : "none",
-                                    }}>
-                                        <div style={{
-                                            fontFamily: "var(--font-sans)",
-                                            fontSize: "clamp(2rem, 3vw, 2.8rem)",
-                                            fontWeight: 600,
-                                            letterSpacing: "-0.02em",
-                                            color: "#f5f4f0",
-                                            lineHeight: 1,
-                                            marginBottom: "6px",
-                                        }}>{stat.value}</div>
-                                        <div style={{
-                                            fontFamily: "var(--font-sans)",
-                                            fontSize: "0.65rem",
-                                            fontWeight: 500,
-                                            letterSpacing: "0.18em",
-                                            textTransform: "uppercase",
-                                            color: "rgba(245,244,240,0.3)",
-                                        }}>{stat.label}</div>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
 
                     {/* ── Scroll indicator — bottom right ── */}
-                    <div style={{
+                    <div id="abt-scroll-indicator" style={{
                         position: "absolute", bottom: "40px", right: "60px",
                         display: "flex", flexDirection: "column", alignItems: "center", gap: "10px",
                         animation: "abt_fadeIn 1s 1.2s both",
@@ -479,6 +415,117 @@ export default function AboutPage() {
                             0%, 100% { opacity: 0.35; transform: scaleY(0.65); transform-origin: top; }
                             50%       { opacity: 1;    transform: scaleY(1);    transform-origin: top; }
                         }
+
+                        /* ═══════════════════════════════
+                           ABOUT PAGE — MOBILE CSS
+                        ═══════════════════════════════ */
+
+                        /* ─ Hero ──────────────────────────── */
+                        @media (max-width: 768px) {
+                            #abt-hero {
+                                min-height: auto;
+                                padding-top: 120px;
+                                padding-bottom: 80px;
+                                align-items: flex-start;
+                            }
+                            #abt-hero-inner {
+                                grid-template-columns: 1fr !important;
+                                gap: 0 !important;
+                                padding: 0 20px !important;
+                            }
+                            #abt-hero-rule { display: none !important; }
+                            #abt-hero-stats {
+                                flex-wrap: wrap;
+                                gap: 0;
+                                margin-top: 40px !important;
+                            }
+                            #abt-hero-stats > div {
+                                padding-right: 24px !important;
+                                margin-right: 24px !important;
+                                min-width: 30%;
+                            }
+                            #abt-scroll-indicator { display: none !important; }
+
+                            /* ─ Brand story ─────────────────── */
+                            #abt-story {
+                                grid-template-columns: 1fr !important;
+                                gap: 40px !important;
+                                padding: 72px 20px !important;
+                            }
+                            #abt-story-img {
+                                height: 280px !important;
+                                order: -1;
+                            }
+
+                            /* ─ Philosophy ──────────────────── */
+                            #abt-philosophy {
+                                padding: 72px 20px !important;
+                            }
+                            #abt-philosophy-grid {
+                                grid-template-columns: 1fr !important;
+                                gap: 16px !important;
+                            }
+
+                            /* ─ Stats ───────────────────────── */
+                            #abt-stats-inner {
+                                padding: 0 20px !important;
+                            }
+                            #abt-stats-inner > div:first-child > div {
+                                margin-bottom: 32px !important;
+                            }
+                            #abt-stats-grid {
+                                grid-template-columns: 1fr 1fr !important;
+                                align-items: stretch !important;
+                            }
+                            /* Make every cell fill its grid row height equally */
+                            #abt-stats-grid > div {
+                                padding: 28px 16px !important;
+                                margin: 0 !important;
+                                border-right: none !important;
+                                height: 100% !important;
+                                box-sizing: border-box !important;
+                                display: flex !important;
+                                flex-direction: column !important;
+                                align-items: center !important;
+                                border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+                            }
+                            /* Right column cells get a left border */
+                            #abt-stats-grid > div:nth-child(2n) {
+                                border-left: 1px solid rgba(255,255,255,0.06) !important;
+                            }
+                            /* Remove bottom border on last row */
+                            #abt-stats-grid > div:nth-last-child(-n+2) {
+                                border-bottom: none !important;
+                            }
+
+                            /* ─ Team (already responsive via .team-grid) ── */
+                            #abt-team-inner {
+                                padding: 0 20px !important;
+                            }
+
+                            /* ─ CTA ─────────────────────────── */
+                            #abt-cta {
+                                padding: 100px 20px !important;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            #abt-hero-inner h1 {
+                                font-size: clamp(2.4rem,9vw,3rem) !important;
+                            }
+                            #abt-story {
+                                padding: 60px 16px !important;
+                            }
+                            #abt-stats-grid {
+                                grid-template-columns: 1fr 1fr !important;
+                            }
+                            /* Stack stats to 2x2 on very small */
+                            #abt-hero-stats > div {
+                                border-right: none !important;
+                                padding-right: 0 !important;
+                                margin-right: 0 !important;
+                            }
+                        }
                     `}</style>
                 </section>
 
@@ -486,7 +533,7 @@ export default function AboutPage() {
                 {/* ══════════════════════════════════════════
                     3. BRAND STORY
                 ══════════════════════════════════════════ */}
-                <section style={{
+                <section id="abt-story" style={{
                     maxWidth: "1320px", margin: "0 auto",
                     padding: "140px 60px",
                     display: "grid",
@@ -505,7 +552,7 @@ export default function AboutPage() {
                             }}>Our story</span>
                         </div>
                         <h2 style={{
-                            fontFamily: "var(--font-serif)",
+                            fontFamily: "var(--font-manrope)",
                             fontSize: "clamp(2.2rem, 4vw, 3.4rem)",
                             fontWeight: 300,
                             lineHeight: 1.12,
@@ -534,7 +581,7 @@ export default function AboutPage() {
 
                     {/* Right: image */}
                     <Reveal from="right">
-                        <div style={{
+                        <div id="abt-story-img" style={{
                             position: "relative",
                             height: "520px",
                             borderRadius: "20px",
@@ -559,7 +606,7 @@ export default function AboutPage() {
                 {/* ══════════════════════════════════════════
                     3. PHILOSOPHY
                 ══════════════════════════════════════════ */}
-                <section style={{
+                <section id="abt-philosophy" style={{
                     maxWidth: "1320px", margin: "0 auto",
                     padding: "120px 60px",
                     borderBottom: "1px solid rgba(255,255,255,0.04)",
@@ -575,7 +622,7 @@ export default function AboutPage() {
                                 <span style={{ width: "24px", height: "1px", background: "var(--clr-accent)" }} />
                             </div>
                             <h2 style={{
-                                fontFamily: "var(--font-serif)",
+                                fontFamily: "var(--font-manrope)",
                                 fontSize: "clamp(2.5rem, 4.5vw, 3.8rem)",
                                 fontWeight: 300,
                                 lineHeight: 1.1,
@@ -588,7 +635,7 @@ export default function AboutPage() {
                         </div>
                     </Reveal>
 
-                    <div style={{
+                    <div id="abt-philosophy-grid" style={{
                         display: "grid",
                         gridTemplateColumns: "1fr 1fr",
                         gap: "24px",
@@ -599,103 +646,6 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* ══════════════════════════════════════════
-                    4. EXPERIENCE / PARALLAX STATEMENT
-                ══════════════════════════════════════════ */}
-                <section
-                    ref={parallaxRef}
-                    style={{
-                        position: "relative",
-                        height: "70vh",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        overflow: "hidden",
-                        textAlign: "center",
-                    }}
-                >
-                    {/* Parallax bg */}
-                    <div style={{
-                        position: "absolute", inset: "-20%",
-                        transform: "translateY(var(--parallax-y, 0))",
-                        transition: "transform 0.05s linear",
-                    }}>
-                        <Image
-                            src="/hero_day.webp"
-                            alt="Luxury smart home"
-                            fill
-                            style={{ objectFit: "cover", objectPosition: "center 30%" }}
-                        />
-                    </div>
-                    <div style={{
-                        position: "absolute", inset: 0,
-                        background: "linear-gradient(135deg, rgba(9,9,14,0.82) 0%, rgba(16,22,32,0.78) 100%)",
-                    }} />
-
-                    <Reveal style={{ position: "relative", zIndex: 2, padding: "0 40px", maxWidth: "900px" }}>
-                        <p style={{
-                            fontFamily: "var(--font-serif)",
-                            fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
-                            fontWeight: 300,
-                            lineHeight: 1.1,
-                            letterSpacing: "-0.025em",
-                            color: "#f5f4f0",
-                            marginBottom: "24px",
-                        }}>
-                            "Technology that disappears<br />
-                            <em style={{ color: "var(--clr-accent)" }}>into your life."</em>
-                        </p>
-                        <p style={{
-                            fontFamily: "var(--font-sans)",
-                            fontSize: "1.05rem",
-                            fontWeight: 300,
-                            lineHeight: 1.8,
-                            color: "rgba(245,244,240,0.45)",
-                            maxWidth: "520px",
-                            margin: "0 auto",
-                        }}>
-                            When a home is truly intelligent, you stop thinking about it. You just live.
-                        </p>
-                    </Reveal>
-                </section>
-
-                {/* ══════════════════════════════════════════
-                    5. PROCESS
-                ══════════════════════════════════════════ */}
-                <section style={{
-                    maxWidth: "1320px", margin: "0 auto",
-                    padding: "140px 60px",
-                    borderBottom: "1px solid rgba(255,255,255,0.04)",
-                }}>
-                    <Reveal>
-                        <div style={{ textAlign: "center", marginBottom: "80px" }}>
-                            <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "20px" }}>
-                                <span style={{ width: "24px", height: "1px", background: "var(--clr-accent)" }} />
-                                <span style={{
-                                    fontFamily: "var(--font-sans)", fontSize: "0.65rem", fontWeight: 500,
-                                    letterSpacing: "0.26em", textTransform: "uppercase", color: "var(--clr-accent)",
-                                }}>How it works</span>
-                                <span style={{ width: "24px", height: "1px", background: "var(--clr-accent)" }} />
-                            </div>
-                            <h2 style={{
-                                fontFamily: "var(--font-serif)",
-                                fontSize: "clamp(2.5rem, 4.5vw, 3.8rem)",
-                                fontWeight: 300,
-                                lineHeight: 1.1,
-                                letterSpacing: "-0.025em",
-                                color: "#f5f4f0",
-                            }}>
-                                From conversation to completion.
-                            </h2>
-                        </div>
-                    </Reveal>
-
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "0" }}>
-                        {PROCESS.map((step, i) => (
-                            <ProcessStep key={step.num} step={step} index={i} isLast={i === PROCESS.length - 1} />
-                        ))}
-                    </div>
-                </section>
 
                 {/* ══════════════════════════════════════════
                     6. STATS
@@ -720,7 +670,28 @@ export default function AboutPage() {
                         filter: "blur(80px)", pointerEvents: "none",
                     }} />
 
-                    <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 60px", position: "relative", zIndex: 2 }}>
+                    <style>{`
+                        #abt-stats-grid {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 0;
+                        }
+                        @media (max-width: 768px) {
+                            #abt-stats-section { padding: 72px 0 !important; }
+                            #abt-stats-inner { padding: 0 20px !important; }
+                            #abt-stats-grid {
+                                grid-template-columns: 1fr 1fr !important;
+                                border: 1px solid rgba(255,255,255,0.06);
+                                border-radius: 16px;
+                                overflow: hidden;
+                            }
+                        }
+                        @media (max-width: 480px) {
+                            #abt-stats-inner { padding: 0 16px !important; }
+                        }
+                    `}</style>
+
+                    <div id="abt-stats-inner" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 60px", position: "relative", zIndex: 2 }}>
                         {/* Section eyebrow */}
                         <Reveal>
                             <div style={{ textAlign: "center", marginBottom: "72px" }}>
@@ -736,11 +707,7 @@ export default function AboutPage() {
                         </Reveal>
 
                         {/* Stats row */}
-                        <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(4, 1fr)",
-                            gap: "0",
-                        }}>
+                        <div id="abt-stats-grid">
                             {STATS.map((stat, i) => (
                                 <StatBlock key={stat.label} stat={stat} index={i} isLast={i === STATS.length - 1} />
                             ))}
@@ -754,37 +721,102 @@ export default function AboutPage() {
                 <section style={{
                     position: "relative",
                     overflow: "hidden",
-                    background: "linear-gradient(160deg, #07080f 0%, #0b0d18 35%, #090c14 65%, #07080e 100%)",
+                    background: "#09090e",
                     borderTop: "1px solid rgba(255,255,255,0.04)",
                     borderBottom: "1px solid rgba(255,255,255,0.04)",
-                    padding: "160px 0 180px",
+                    padding: "120px 0 140px",
                 }}>
-                    {/* Noise texture overlay */}
-                    <div className="noise-overlay" style={{ opacity: 0.55 }} />
-
-                    {/* Ambient orbs */}
+                    {/* Subtle ambient glow */}
                     <div aria-hidden="true" style={{
-                        position: "absolute", top: "5%", left: "-10%",
-                        width: "55vw", height: "55vw", maxWidth: "700px",
-                        borderRadius: "50%",
-                        background: "radial-gradient(ellipse, rgba(140,180,184,0.06) 0%, transparent 70%)",
-                        filter: "blur(90px)", pointerEvents: "none",
-                    }} />
-                    <div aria-hidden="true" style={{
-                        position: "absolute", bottom: "0%", right: "-8%",
-                        width: "50vw", height: "50vw", maxWidth: "650px",
-                        borderRadius: "50%",
-                        background: "radial-gradient(ellipse, rgba(200,169,110,0.045) 0%, transparent 70%)",
-                        filter: "blur(100px)", pointerEvents: "none",
+                        position: "absolute", top: "0", left: "50%",
+                        transform: "translateX(-50%)",
+                        width: "70vw", height: "50vh",
+                        background: "radial-gradient(ellipse, rgba(140,180,184,0.04) 0%, transparent 70%)",
+                        filter: "blur(80px)", pointerEvents: "none",
                     }} />
 
-                    {/* Inner constrained content */}
-                    <div style={{ maxWidth: "1380px", margin: "0 auto", padding: "0 60px", position: "relative", zIndex: 2 }}>
+                    <style>{`
+                        .team-grid {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            gap: 24px;
+                        }
+                        .team-card {
+                            cursor: default;
+                        }
+                        .team-img-wrap {
+                            position: relative;
+                            aspect-ratio: 4/5;
+                            border-radius: 16px;
+                            overflow: hidden;
+                            border: 1px solid rgba(255,255,255,0.07);
+                            background: #0f1020;
+                            margin-bottom: 16px;
+                            transition: box-shadow 0.4s ease;
+                        }
+                        .team-card:hover .team-img-wrap {
+                            box-shadow: 0 24px 56px rgba(0,0,0,0.55), 0 0 0 1px rgba(140,180,184,0.18);
+                        }
+                        .team-img-wrap img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            object-position: center top;
+                            transition: transform 0.65s cubic-bezier(0.22,0.61,0.36,1);
+                        }
+                        .team-card:hover .team-img-wrap img {
+                            transform: scale(1.05);
+                        }
+                        .team-img-overlay {
+                            position: absolute;
+                            inset: 0;
+                            background: linear-gradient(to top, rgba(9,9,14,0.45) 0%, transparent 55%);
+                            opacity: 0;
+                            transition: opacity 0.4s ease;
+                        }
+                        .team-card:hover .team-img-overlay {
+                            opacity: 1;
+                        }
+                        .team-name {
+                            font-family: var(--font-manrope);
+                            font-size: 1rem;
+                            font-weight: 600;
+                            color: #f5f4f0;
+                            letter-spacing: -0.01em;
+                            margin: 0 0 4px;
+                            transition: transform 0.35s ease;
+                        }
+                        .team-card:hover .team-name {
+                            transform: translateY(-2px);
+                        }
+                        .team-role {
+                            font-family: var(--font-sans);
+                            font-size: 0.72rem;
+                            font-weight: 500;
+                            letter-spacing: 0.12em;
+                            text-transform: uppercase;
+                            color: rgba(140,180,184,0.65);
+                            margin: 0;
+                        }
+                        /* Responsive */
+                        @media (max-width: 1100px) {
+                            .team-grid { grid-template-columns: repeat(3, 1fr); }
+                        }
+                        @media (max-width: 768px) {
+                            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+                        }
+                        @media (max-width: 480px) {
+                            .team-grid { grid-template-columns: 1fr; gap: 20px; }
+                            .team-img-wrap { aspect-ratio: 3/4; border-radius: 12px; }
+                        }
+                    `}</style>
+
+                    <div id="abt-team-inner" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 clamp(20px,4vw,60px)", position: "relative", zIndex: 2 }}>
 
                         {/* Section header */}
                         <Reveal>
-                            <div style={{ textAlign: "center", marginBottom: "100px" }}>
-                                <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "22px" }}>
+                            <div style={{ textAlign: "center", marginBottom: "72px" }}>
+                                <div style={{ display: "inline-flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
                                     <span style={{ width: "28px", height: "1px", background: "var(--clr-accent)" }} />
                                     <span style={{
                                         fontFamily: "var(--font-sans)", fontSize: "0.63rem", fontWeight: 600,
@@ -793,49 +825,56 @@ export default function AboutPage() {
                                     <span style={{ width: "28px", height: "1px", background: "var(--clr-accent)" }} />
                                 </div>
                                 <h2 style={{
-                                    fontFamily: "var(--font-serif)",
-                                    fontSize: "clamp(2.6rem, 4.5vw, 4rem)",
+                                    fontFamily: "var(--font-manrope)",
+                                    fontSize: "clamp(2.4rem, 4vw, 3.6rem)",
                                     fontWeight: 300,
                                     lineHeight: 1.08,
                                     letterSpacing: "-0.03em",
                                     color: "#f5f4f0",
-                                    margin: "0 auto 20px",
-                                    maxWidth: "700px",
+                                    margin: "0 auto 16px",
+                                    maxWidth: "600px",
                                 }}>
-                                    The People Behind the Vision
+                                    The people behind<br />
+                                    <span style={{ background: "linear-gradient(90deg, var(--clr-accent), var(--clr-gold))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>the vision.</span>
                                 </h2>
                                 <p style={{
-                                    fontFamily: "var(--font-sans)",
-                                    fontSize: "1rem",
-                                    fontWeight: 300,
-                                    lineHeight: 1.8,
-                                    color: "rgba(245,244,240,0.40)",
-                                    maxWidth: "460px",
-                                    margin: "0 auto",
+                                    fontFamily: "var(--font-sans)", fontSize: "0.95rem", fontWeight: 300,
+                                    lineHeight: 1.75, color: "rgba(245,244,240,0.38)",
+                                    maxWidth: "400px", margin: "0 auto",
                                 }}>
-                                    A multidisciplinary team shaping intelligent living experiences.
+                                    A multidisciplinary team shaping intelligent living.
                                 </p>
                             </div>
                         </Reveal>
 
                         {/* Card grid */}
-                        <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(3, 1fr)",
-                            gap: "24px",
-                        }}>
+                        <div className="team-grid">
                             {TEAM.map((member, i) => (
-                                <TeamCard key={member.name} member={member} index={i} staggerDelay={(i % 3) * 120} />
+                                <Reveal key={member.image} delay={(i % 4) * 80}>
+                                    <div className="team-card">
+                                        <div className="team-img-wrap">
+                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            <img
+                                                src={member.image}
+                                                alt={member.name}
+                                                loading={i < 4 ? "eager" : "lazy"}
+                                            />
+                                            <div className="team-img-overlay" />
+                                        </div>
+                                        <p className="team-name">{member.name}</p>
+                                        <p className="team-role">{member.role}</p>
+                                    </div>
+                                </Reveal>
                             ))}
                         </div>
-
                     </div>
                 </section>
+
 
                 {/* ══════════════════════════════════════════
                     8. CTA
                 ══════════════════════════════════════════ */}
-                <section style={{ position: "relative", overflow: "hidden", padding: "160px 60px", textAlign: "center" }}>
+                <section id="abt-cta" style={{ position: "relative", overflow: "hidden", padding: "160px 60px", textAlign: "center" }}>
                     {/* Ambient orbs */}
                     <div aria-hidden="true" style={{
                         position: "absolute", top: "-20%", left: "50%", transform: "translateX(-50%)",
@@ -863,7 +902,7 @@ export default function AboutPage() {
                         </div>
 
                         <h2 style={{
-                            fontFamily: "var(--font-serif)",
+                            fontFamily: "var(--font-manrope)",
                             fontSize: "clamp(3rem, 6vw, 5.5rem)",
                             fontWeight: 300,
                             lineHeight: 1.06,
@@ -900,173 +939,7 @@ export default function AboutPage() {
 
 // ── Sub-components ────────────────────────────────────────────────────────────
 
-function TeamCard({
-    member,
-    index,
-    staggerDelay = 0,
-}: {
-    member: typeof TEAM[0];
-    index: number;
-    staggerDelay?: number;
-}) {
-    const { ref, visible } = useReveal();
-    const [hovered, setHovered] = useState(false);
 
-    return (
-        <div
-            ref={ref}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            style={{
-                position: "relative",
-                borderRadius: "16px",
-                overflow: "hidden",
-                cursor: "default",
-                // Reveal animation
-                opacity: visible ? 1 : 0,
-                transform: visible
-                    ? (hovered ? "translateY(-8px)" : "translateY(0px)")
-                    : "translateY(52px)",
-                // Glass card base
-                background: "linear-gradient(160deg, rgba(18,22,38,0.82) 0%, rgba(10,11,18,0.75) 100%)",
-                border: hovered
-                    ? "1px solid rgba(140,180,184,0.25)"
-                    : "1px solid rgba(255,255,255,0.06)",
-                backdropFilter: "blur(18px)",
-                WebkitBackdropFilter: "blur(18px)",
-                // Glow + lift
-                boxShadow: hovered
-                    ? "0 28px 72px rgba(0,0,0,0.65), 0 0 0 1px rgba(140,180,184,0.12), 0 0 60px rgba(140,180,184,0.1)"
-                    : "0 8px 32px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04)",
-                transition: [
-                    `opacity 0.85s cubic-bezier(0.22,0.61,0.36,1) ${staggerDelay}ms`,
-                    `transform 0.5s cubic-bezier(0.22,0.61,0.36,1)`,
-                    "border-color 0.4s ease",
-                    "box-shadow 0.45s ease",
-                ].join(", "),
-            }}
-        >
-            {/* ── Image area ── */}
-            <div style={{
-                position: "relative",
-                height: "300px",
-                overflow: "hidden",
-            }}>
-                <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    style={{
-                        objectFit: "cover",
-                        objectPosition: "center top",
-                        transform: hovered ? "scale(1.06)" : "scale(1.0)",
-                        transition: "transform 0.75s cubic-bezier(0.22,0.61,0.36,1)",
-                        filter: hovered ? "brightness(1.06)" : "brightness(0.92)",
-                    }}
-                />
-                {/* Cinematic bottom gradient — text will visually overlap this */}
-                <div style={{
-                    position: "absolute", inset: 0,
-                    background: "linear-gradient(to top, rgba(7,8,15,1) 0%, rgba(7,8,15,0.7) 28%, rgba(7,8,15,0.1) 60%, transparent 100%)",
-                    transition: "opacity 0.4s ease",
-                }} />
-                {/* Subtle vignette sides */}
-                <div style={{
-                    position: "absolute", inset: 0,
-                    background: "linear-gradient(to right, rgba(7,8,15,0.35) 0%, transparent 30%, transparent 70%, rgba(7,8,15,0.35) 100%)",
-                }} />
-
-                {/* Index badge */}
-                <div style={{
-                    position: "absolute",
-                    top: "18px",
-                    right: "18px",
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.58rem",
-                    fontWeight: 600,
-                    letterSpacing: "0.2em",
-                    color: "rgba(140,180,184,0.55)",
-                    zIndex: 3,
-                }}>
-                    {String(index + 1).padStart(2, "0")}
-                </div>
-
-                {/* ── Text overlapping the image bottom ── */}
-                <div style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    padding: "0 26px 22px",
-                    zIndex: 3,
-                }}>
-                    {/* Accent rule */}
-                    <div style={{
-                        width: hovered ? "40px" : "24px",
-                        height: "1px",
-                        background: "var(--clr-accent)",
-                        marginBottom: "12px",
-                        transition: "width 0.4s cubic-bezier(0.22,0.61,0.36,1)",
-                        opacity: 0.9,
-                    }} />
-                    <h3 style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: "clamp(1.3rem, 1.9vw, 1.7rem)",
-                        fontWeight: 400,
-                        lineHeight: 1.1,
-                        letterSpacing: "-0.015em",
-                        color: "#f5f4f0",
-                        marginBottom: "5px",
-                        textShadow: "0 2px 12px rgba(0,0,0,0.6)",
-                    }}>
-                        {member.name}
-                    </h3>
-                    <p style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize: "0.62rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.18em",
-                        textTransform: "uppercase",
-                        color: "var(--clr-accent)",
-                        opacity: 0.85,
-                    }}>
-                        {member.role}
-                    </p>
-                </div>
-            </div>
-
-            {/* ── Bio content ── */}
-            <div style={{
-                padding: "22px 26px 28px",
-                borderTop: "1px solid rgba(255,255,255,0.05)",
-            }}>
-                <p style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.88rem",
-                    fontWeight: 300,
-                    lineHeight: 1.78,
-                    color: "rgba(245,244,240,0.42)",
-                    transition: "color 0.3s ease",
-                    ...(hovered ? { color: "rgba(245,244,240,0.58)" } : {}),
-                }}>
-                    {member.bio}
-                </p>
-            </div>
-
-            {/* Hover glow ring (inset) */}
-            {hovered && (
-                <div style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: "16px",
-                    pointerEvents: "none",
-                    background: "radial-gradient(ellipse at 50% 0%, rgba(140,180,184,0.07) 0%, transparent 60%)",
-                }} />
-            )}
-        </div>
-    );
-}
 
 function PhilosophyCard({ item, delay }: { item: typeof PHILOSOPHY[0]; delay: number }) {
     const { ref, visible } = useReveal();
@@ -1108,7 +981,7 @@ function PhilosophyCard({ item, delay }: { item: typeof PHILOSOPHY[0]; delay: nu
                 letterSpacing: "0.22em", textTransform: "uppercase", color: "var(--clr-accent)",
             }}>{item.number}</span>
             <h3 style={{
-                fontFamily: "var(--font-serif)", fontSize: "1.55rem", fontWeight: 400,
+                fontFamily: "var(--font-manrope)", fontSize: "1.55rem", fontWeight: 400,
                 color: "#f5f4f0", letterSpacing: "-0.015em", lineHeight: 1.2,
             }}>{item.title}</h3>
             <p style={{
@@ -1165,7 +1038,7 @@ function ProcessStep({ step, index, isLast }: { step: typeof PROCESS[0]; index: 
             }}>{step.num}</span>
 
             <h3 style={{
-                fontFamily: "var(--font-serif)", fontSize: "1.3rem", fontWeight: 400,
+                fontFamily: "var(--font-manrope)", fontSize: "1.3rem", fontWeight: 400,
                 color: "#f5f4f0", letterSpacing: "-0.01em", lineHeight: 1.2,
                 marginBottom: "14px",
             }}>{step.title}</h3>
